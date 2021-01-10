@@ -247,7 +247,8 @@ export const poorPerfData = {
         "number_of_syllables": 250,
         "original_duration": 34,
         "rate_of_speech": 3,
-        "speaking_duration": 30
+        "speaking_duration": 30,
+        "words_per_min": 100
     },
     "tone": 'neutral',
     "transcription": "we are covering better ways of developing software by doing it and helping others like to do it through his work we have come to Value individuals and attractions over processes and tools working software over comprehensive Doc's customer collaboration over contract negotiation responding to change over following a path that is a wall there is value in the items on the right we value the items on the right more",
