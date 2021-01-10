@@ -15,6 +15,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // import CircularProgress from '../components/CircularProgress';
 import LineChart from '../components/LineChart';
 import BarChart from '../components/BarChart';
+import { goodPerfData } from '../sampleData';
 
 const useStyles = makeStyles({
     button: {
@@ -67,6 +68,8 @@ const styles = (theme) => ({
   }))(MuiDialogActions);
 
 function Dashboard() {
+    const { accuracy, audioValues, stats, transcription } = goodPerfData;
+    const { articulation_rate, balance, number_of_pauses, original_duration, rate_of_speech, speaking_duration, words_per_min} = stats;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
 
@@ -87,17 +90,17 @@ function Dashboard() {
                     <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
                     <Box style={{height: "285px", width: "285px", borderRadius: "50%", backgroundColor: "#3C7C64", marginTop: "-326px", marginLeft: "44px"}}/>
                     <Box style={{height: "230px", width: "230px", borderRadius: "50%", backgroundColor: "#52AA8A", marginTop: "-259px", marginLeft:"71px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-170px", marginLeft: "114px"}}><strong>87%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-170px", marginLeft: "114px"}}><strong>{accuracy}%</strong></Typography>
 				</Grid>
                 <Grid item xs={3}>
                     <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "140px", marginLeft: "57px"}}>
-                        Excellent speaking! From our analysis, the tone of your speech was 87% positive, which matches your initial selection.
+                        Excellent speaking! From our analysis, the tone of your speech was {accuracy}% positive, which matches your initial selection.
                     </Typography>
 				</Grid>
                 <Grid item xs={2}>
                     <Box style={{border: "9px solid #F4A261", height: "145px", width: "145px", borderRadius: "50%", marginTop: "120px", marginLeft: "5px"}}/>
                     <Typography variant="h6" style={{color: "white", marginTop: "10px", marginLeft: "36px"}}><strong>Words per Minute</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", marginTop: "-182px", marginLeft: "48px"}}><strong>100</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", marginTop: "-182px", marginLeft: "48px"}}><strong>{words_per_min}</strong></Typography>
 				</Grid>
                 <Grid item xs={2}>
                     <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-5px"}}/>
@@ -106,14 +109,14 @@ function Dashboard() {
 				</Grid>
                 <Grid item xs={1}>
                     <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-15px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "-172px", marginLeft: "41px", marginTop: "10px"}}><strong>Filler Words</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-181px", marginLeft: "44px"}}><strong>12</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "10px", marginLeft: "41px"}}><strong>Filler Words</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-181px", marginLeft: "44px"}}><strong>{number_of_pauses}</strong></Typography>
 				</Grid>
 			</Grid>
 
             {/* Energy over Time Line Chart */}
             <div style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "300px", marginTop: "140px", borderRadius: "25px", padding: '2rem'}}>
-                <LineChart />
+                <LineChart values={audioValues} />
             </div> 
 
 
@@ -150,13 +153,7 @@ function Dashboard() {
                 </DialogTitle>
                 <DialogContent dividers>
                     <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                        in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor.
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                        scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                        auctor fringilla.
+                        {transcription}
                     </Typography>
                 </DialogContent>
                 <DialogActions>
