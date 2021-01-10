@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -18,11 +18,6 @@ const useStyles = makeStyles({
 
 function Landing() {
 	const classes = useStyles();
-	const [redirect, setRedirect] = useState(false);
-
-	const handleClick = () => {
-		setRedirect(true);
-	};
 
 	return (
 		<div style={{width:"60%"}}> 
