@@ -15,7 +15,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // import CircularProgress from '../components/CircularProgress';
 import LineChart from '../components/LineChart';
 import BarChart from '../components/BarChart';
-import { goodPerfData } from '../sampleData';
+import { goodPerfData, poorPerfData } from '../sampleData';
 
 const useStyles = makeStyles({
     button: {
@@ -68,8 +68,8 @@ const styles = (theme) => ({
   }))(MuiDialogActions);
 
 function Dashboard() {
-    const { accuracy, audioValues, stats, transcription } = goodPerfData;
-    const { articulation_rate, balance, number_of_pauses, original_duration, rate_of_speech, speaking_duration, words_per_min} = stats;
+    const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = goodPerfData;
+    const { articulation_rate, balance, enunciation, number_of_pauses, original_duration, rate_of_speech, speaking_duration, words_per_min} = stats;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
 
@@ -94,7 +94,7 @@ function Dashboard() {
 				</Grid>
                 <Grid item xs={3}>
                     <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "140px", marginLeft: "57px"}}>
-                        Excellent speaking! From our analysis, the tone of your speech was {accuracy}% positive, which matches your initial selection.
+                        Excellent speaking! From our analysis, the tone of your speech was {accuracy}% {tone}, which matches your initial selection.
                     </Typography>
 				</Grid>
                 <Grid item xs={2}>
@@ -104,7 +104,7 @@ function Dashboard() {
 				</Grid>
                 <Grid item xs={2}>
                     <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-5px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-118px", marginLeft: "38px"}}><strong>79%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-118px", marginLeft: "38px"}}><strong>{enunciation}%</strong></Typography>
                     <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "52px"}}><strong>Enunciation</strong></Typography>
 				</Grid>
                 <Grid item xs={1}>
@@ -123,14 +123,24 @@ function Dashboard() {
             {/* Bar Graph & Tips and Tricks Section */}
             <Grid container spacing={1} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={5}>
-                    <BarChart />
+                    <BarChart values={errorsInterval} />
                 </Grid>
-                <Grid item container xs={7} direction="row" alignItems="center" style={{marginTop: "-150px"}}>
-                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", marginLeft: "90px", marginTop: "-65px"}}/>
-                   
-                    <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginTop: "-125px", marginLeft: "-200px"}}><strong>Tips and Tricks</strong></Typography>
+                <Grid item container xs={7} direction="column">
+                    <Grid item container direction="row" alignItems="center">
+                        <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px"}}/>
+                        <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginLeft: "-180px", marginTop: "-80px"}}>
+                            <strong>Tips and Tricks</strong>
+                        </Typography>
+                    </Grid>
+                    <Grid item container direction="column" style={{ width: '70%', marginLeft: "3rem", marginTop: "-60px"}}>
+                        {
+                            suggestions.map((item, i) => <Typography key={i} variant="body1" style={{ color: 'white' }} paragraph>{item}</Typography>)
+                        }
+                    </Grid>
                 </Grid>
             </Grid>
+
+            <br /><br /><br />
 
             {/* Button Group */}
             <Grid container spacing={6} direction="row" justify="space-evenly">
@@ -145,6 +155,8 @@ function Dashboard() {
 					</Button>
                 </Grid>
             </Grid>
+
+            <br /><br /><br />
 
             {/* Transcript Popup */}
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
