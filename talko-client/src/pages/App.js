@@ -6,6 +6,7 @@ import Tone from './Tone';
 import Speech from './Speech';
 import Recording from './Recording';
 import Dashboard from './Dashboard';
+import About from './About';
 import SpeechContext from '../context/speechContext';
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
           exact
           path="/dashboard"
           render={() => <Dashboard />}
+        />
+        <Route
+          exact
+          path="/about"
+          render={() => <About />}
         />
       </Switch>
     </Router>
