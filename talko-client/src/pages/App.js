@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Landing from './Landing';
+import Speech from './Speech';
 
 function App() {
   return (
     <React.Fragment>
       <Navbar />
-      <Landing />
+      <Speech />
     </React.Fragment>
   );
 }
