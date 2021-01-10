@@ -118,14 +118,14 @@ function Dashboard() {
 
 
             {/* Bar Graph & Tips and Tricks Section */}
-            <Grid container spacing={6} style={{ marginLeft: '5rem'}}>
-                <Grid item xs={6}>
+            <Grid container spacing={1} style={{ marginLeft: '5rem'}}>
+                <Grid item xs={5}>
                     <BarChart />
                 </Grid>
-                <Grid item container xs={6} direction="row" alignItems="center">
-                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", marginLeft: "55px", marginTop: "-65px"}}/>
+                <Grid item container xs={7} direction="row" alignItems="center" style={{marginTop: "-150px"}}>
+                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", marginLeft: "90px", marginTop: "-65px"}}/>
                    
-                    <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginTop: "-125px", marginLeft: "-202px"}}><strong>Tips and Tricks</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginTop: "-125px", marginLeft: "-200px"}}><strong>Tips and Tricks</strong></Typography>
                 </Grid>
             </Grid>
 

@@ -63,8 +63,8 @@ function BarChart(props) {
                     }]
                 }
             }}
-            width={1250}
-            height={500}
+            width={750}
+            height={475}
         /> 
     );
 }
