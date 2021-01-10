@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
 function Recording() {
     const classes = useStyles();
     const [record, setRecord] = useState(false);
+    const [audioBlob, setAudioBlob] = useState(null);
 
     const handleClick = () => {
         setRecord(!record);
@@ -34,6 +35,7 @@ function Recording() {
 
     const onStop = (recordedBlob) => {
         console.log('recordedBlob is: ', recordedBlob);
+        setAudioBlob(recordedBlob);
     };
     
 	return (
@@ -43,6 +45,8 @@ function Recording() {
                     <b>Press the icon to start recording your speech</b>
                 </Typography>
             </Grid>
+            <br/>
+            <br/>
             <ReactMic
                 record={record}
                 className="sound-wave"
@@ -51,7 +55,7 @@ function Recording() {
                 strokeColor="#F2C407"
                 backgroundColor="#1A2930"
             />
-            <Box style={{border: "4px solid #C75943", height: "112px", width: "112px", borderRadius: "50%", marginLeft:"629px", marginTop: "103px"}}/>
+            <Box style={{border: "4px solid #C75943", height: "112px", width: "112px", borderRadius: "50%", marginLeft:"629px", marginTop: "30px"}}/>
             <Box style={{border: "4px solid #C75943", height: "145px", width: "145px", borderRadius: "50%", marginLeft:"612px", marginTop: "-136px"}}/>
             <Button onClick={handleClick}>
                 <img src={Mic} alt="Mic" style={{width: "75px", height: "75px", marginLeft: "-45px", marginTop: "-175px"}}/>
