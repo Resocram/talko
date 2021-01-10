@@ -106,14 +106,14 @@ function Dashboard() {
                     <Typography variant="h3" style={{color: "white", marginTop: "-182px", marginLeft: "48px"}}><strong>{words_per_min}</strong></Typography>
 				</Grid>
                 <Grid item xs={2}>
-                    <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-5px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-112px", marginLeft: "38px"}}><strong>79%</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "70px"}}><strong>Enunciation</strong></Typography>
+                    <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-10px"}}/>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-112px", marginLeft: "33px"}}><strong>79%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "19px", marginTop: "70px"}}><strong>Enunciation</strong></Typography>
 				</Grid>
                 <Grid item xs={1}>
-                    <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-15px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "27px", marginLeft: "50px"}}><strong>Filler Words</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-181px", marginLeft: "50px"}}><strong>{number_of_pauses}</strong></Typography>
+                    <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-25px"}}/>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "12px", marginLeft: "24px"}}><strong>Pauses</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-137px", marginLeft: "36px"}}><strong>{number_of_pauses}</strong></Typography>
 				</Grid>
 			</Grid>
 

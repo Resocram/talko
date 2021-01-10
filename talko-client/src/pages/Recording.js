@@ -83,7 +83,7 @@ function Recording() {
                 <Box style={{border: "4px solid #C75943", height: "112px", width: "112px", borderRadius: "50%", marginLeft:"655px", marginTop: "30px"}}/>
                 <Box style={{border: "4px solid #C75943", height: "145px", width: "145px", borderRadius: "50%", marginLeft:"638px", marginTop: "-136px"}}/>
                 <Button onClick={handleRecord}>
-                    <img src={Mic} alt="Mic" style={{width: "75px", height: "75px", marginLeft: "6px", marginTop: "-175px"}}/>
+                    <img src={Mic} alt="Mic" style={{width: "75px", height: "75px", marginLeft: "60px", marginTop: "-168px"}}/>
                 </Button>
             </Grid>
             <br />
