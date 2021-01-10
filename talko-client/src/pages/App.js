@@ -13,8 +13,8 @@ function App() {
       <Navbar />
       {/* <Landing /> */}
       {/* <Tone /> */}
-      {/* <Speech /> */}
-      <Recording />
+      <Speech />
+      {/* <Recording /> */}
       {/* <Dashboard /> */}
     </SpeechContext>
   );
