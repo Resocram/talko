@@ -25,12 +25,13 @@ def api():
             opportunities! Thank you so much!"""
 
     accuracy = getAccuracy(userInput, transcription)
-    print(accuracy)
 
+    statsJson = stats.to_json(orient="split")
+    audioValuesList = audioValues.tolist()
 
     return {
-      stats: stats,
-      transcription: transcription,
-      audioValues: audioValues,
-      accuracy: accuracy
+      'stats': statsJson,
+      'transcription': transcription,
+      'audioValues': audioValuesList,
+      'accuracy': accuracy,
     }
