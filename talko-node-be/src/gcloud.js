@@ -10,7 +10,7 @@ const storage = new Storage({
   projectId: 'talko-301223'
 });
 
-async function uploadFile() {
+async function uploadFile(audio) {
   // Uploads a local file to the bucket
   await storage.bucket(bucketName).upload(path.basename('./a.wav'), {
     // Support for HTTP requests made with `Accept-Encoding: gzip`
@@ -31,3 +31,5 @@ async function uploadFile() {
 }
 
 uploadFile().catch(console.error);
+
+module.exports = uploadFile;
