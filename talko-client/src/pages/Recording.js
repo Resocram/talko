@@ -45,14 +45,16 @@ function Recording() {
     };
 
 	const handleClick = () => {
-        const convertToData = async () => {
-            const data = await convert(audioBlob, 'dataURL')
-            console.log(data);
-            axios.post('http://localhost:8000/upload', data);
-            setRedirect(true);
+        // const convertToData = async () => {
+        //     const data = await convert(audioBlob, 'dataURL')
+        //     console.log(data);
+        //     axios.post('http://localhost:8000/upload', data);
+        //     setRedirect(true);
            
-        }
-        convertToData();
+        // }
+        // convertToData();
+        // Simulating request
+        setTimeout(function(){ setRedirect(true); }, 2000);
 	};
 
     const ins = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
