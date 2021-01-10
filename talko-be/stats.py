@@ -54,9 +54,17 @@ def getStats(text,m,p):
         test = syllables.estimate(text)
         words_per_min = int(int(z5[2,:]) * words/(syllables.estimate(text)) * 60)
 
-        dataset=pd.DataFrame({"number_ of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
+        dataset=pd.DataFrame({"number_of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
                           "original_duration":z5[5,:],"balance":z5[6,:],"words_per_min":words_per_min})
-        return (dataset)
+        dataset["number_of_syllables"] = dataset["number_of_syllables"].astype(float)
+        dataset["number_of_pauses"] = dataset["number_of_pauses"].astype(float)
+        dataset["rate_of_speech"] = dataset["rate_of_speech"].astype(float)
+        dataset["articulation_rate"] = dataset["articulation_rate"].astype(float)
+        dataset["speaking_duration"] = dataset["speaking_duration"].astype(float)
+        dataset["original_duration"] = dataset["original_duration"].astype(float)
+        dataset["balance"] = dataset["balance"].astype(float)
+
+        return dataset.to_dict(orient='index')[0]
     except:
         print ("Try again the sound of the audio was not clear")
 
