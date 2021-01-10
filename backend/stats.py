@@ -1,4 +1,4 @@
-from google.cloud import speech
+from google.cloud import speech,storage
 import io
 import wave, struct, matplotlib.pyplot as plt
 import syllables
@@ -8,6 +8,35 @@ import parselmouth
 from parselmouth.praat import call, run_file
 import pandas as pd
 import numpy as np
+import cloudstorage as gcs
+import os
+
+# params:
+# bucket_name is the name of our bucket (talko)
+# blob is the name of the file
+# destination is where you want to save the file to
+
+def read_file(bucket_name,blob,destination):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(blob)
+    blob.download_to_filename(destination)
+
+# params:
+# text is the passage the user wants to write
+# m is the name of the .wav file without the .wav extension
+# p is the path of the directory that contains the .wav files
+#
+# returns:
+# dataframe of values analyzed from audio
+# number_of_syllables
+# number_of_pauses
+# rate_of_speech
+# articulation_rate
+# speaking_duration
+# original_duration
+# balance
+# words_per_min
 
 def getStats(text,m,p):
     sound=p+"/"+m+".wav"
@@ -26,12 +55,17 @@ def getStats(text,m,p):
         words_per_min = int(int(z5[2,:]) * words/(syllables.estimate(text)) * 60)
 
         dataset=pd.DataFrame({"number_ of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
-                          "original_duration":z5[5,:],"balance":z5[6,:],"f0_mean":z5[7,:],"f0_std":z5[8,:],"f0_median":z5[9,:],"f0_min":z5[10,:],"f0_max":z5[11,:],
-                          "f0_quantile25":z5[12,:],"f0_quan75":z5[13,:],"words_per_min":words_per_min})
+                          "original_duration":z5[5,:],"balance":z5[6,:],"words_per_min":words_per_min})
         return (dataset)
     except:
         print ("Try again the sound of the audio was not clear")
 
+# params:
+# userInput is the first text you want to compare
+# transcribed is the second text you want to compare it to
+#
+# returns:
+# integer value from 0-100 that represents the percentage of accuracy\
 
 def getAccuracy(userInput,transcribed):
     return fuzz.ratio(userInput,transcribed)
@@ -55,6 +89,13 @@ def getTranscription(gcs_uri):
         # The first alternative is the most likely one for this portion.
         words = words + result.alternatives[0].transcript
     return words
+
+# params:
+# file is the filename
+#
+# returns:
+# returns an array of 100 data points from 0 to 1 that
+# represent the normalized audio level
 
 def getAudioValues(file):
     w = wave.open(file,"rb")
@@ -99,5 +140,3 @@ def getAudioValues(file):
     normalize = (poly_y - np.min(poly_y)) / (np.max(poly_y) - np.min(poly_y))
 
     return normalize
-
-
