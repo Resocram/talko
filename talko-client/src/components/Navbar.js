@@ -30,14 +30,16 @@ function Navbar() {
         <Grid container direction="row" className={classes.root}>
             <LogoButton />
             <Grid item style={{ flexGrow: 1, height: 0 }} />
-            <Tabs
-                value={value}
-                onChange={handleChange}
-            >
-                <Tab label={<Typography variant="h6" paragraph><b>Get Started</b></Typography>} className={classes.tab} />
-                <Tab label={<Typography variant="h6" paragraph><b>Dashboard</b></Typography>} className={classes.tab} />
-                <Tab label={<Typography variant="h6" paragraph><b>About Us</b></Typography>} className={classes.tab} />
-            </Tabs>
+            <Grid item>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                >
+                    <Tab label={<Typography variant="body1" paragraph><b>Get Started</b></Typography>} className={classes.tab} />
+                    <Tab label={<Typography variant="body1" paragraph><b>Dashboard</b></Typography>} className={classes.tab} />
+                    <Tab label={<Typography variant="body1" paragraph><b>About Us</b></Typography>} className={classes.tab} />
+                </Tabs>
+            </Grid>
         </Grid>
     );
 }
