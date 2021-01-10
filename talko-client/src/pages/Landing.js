@@ -1,12 +1,12 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 function Landing() {
 	return (
 		<div>
-			<h1>Talko.</h1>
-			<h2><strong>Description Bold</strong></h2>
-			<h3>Description Regular</h3>
+			<Typography varaint="h1">Talko.</Typography>
+			<Typography varaint="h2"><strong>Description Bold</strong></Typography>
+			<Typography varaint="h3">Description Regular</Typography>
 		</div>
 	);
 }

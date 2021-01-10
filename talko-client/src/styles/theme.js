@@ -14,7 +14,7 @@ const theme = createMuiTheme({
         }
     },
     typography: {
-        fontFamily: 'Raleway'
+        fontFamily: 'Montserrat'
     }
 });
 
