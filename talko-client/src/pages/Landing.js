@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Desktop from '../assets/desktop.svg';
 import Grid from '@material-ui/core/Grid'; 
+import Dash from '../assets/dash.svg';
 
 const useStyles = makeStyles({
 	container: {
@@ -33,7 +34,8 @@ function Landing() {
 					</Button>
 				</Grid>
 				<Grid item xs={2}>
-					<img src={Desktop} alt="desktop" style={{width: "25rem", height: "25rem", marginLeft: "9rem", marginTop: "4rem"}}/>
+					<img src={Desktop} alt="desktop" style={{width: "25rem", height: "25rem", marginLeft: "9rem", marginTop: "5rem"}}/>
+					<img src={Dash} alt="dash" style={{width: "22rem", height: "22rem", marginLeft: "10.5rem", marginTop: "-700px"}}/>
 				</Grid>
 			</Grid>
 		</div>		
