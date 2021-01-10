@@ -23,15 +23,16 @@ function Dashboard() {
 
 	return (
         <div>
+            <Typography variant="h1" paragraph style={{color: "#F2C407", fontFamily: "Righteous", margin: '-1rem 3rem'}}>Dashboard</Typography>
             <Grid container spacing={1} style={{ height: '100%' }}>
-				<Grid item xs={3} style={{marginLeft:"50px"}}>
+				<Grid item xs={3} style={{marginLeft:"50px", marginTop: "60px"}}>
                     <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
                     <Box style={{height: "285px", width: "285px", borderRadius: "50%", backgroundColor: "#3C7C64", marginTop: "-326px", marginLeft: "44px"}}/>
                     <Box style={{height: "230px", width: "230px", borderRadius: "50%", backgroundColor: "#52AA8A", marginTop: "-259px", marginLeft:"71px"}}/>
                     <Typography varaint="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-170px", marginLeft: "114px"}}><strong>87%</strong></Typography>
 				</Grid>
                 <Grid item xs={3}>
-                    <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "85px", marginLeft: "57px"}}>
+                    <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "140px", marginLeft: "57px"}}>
                         Excellent speaking! From our analysis, the tone of your speech was 87% positive, which matches your initial selection.
                     </Typography>
 				</Grid>
