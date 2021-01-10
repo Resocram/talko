@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import lightbulb from '../assets/lightbulb.svg';
@@ -39,9 +39,22 @@ function Dashboard() {
 				</Grid>
 			</Grid>
 
-            <Box style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "250px", marginTop: "140px"}}>
+            <Box style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "270px", marginTop: "140px", borderRadius: "25px"}}>
                 <Divider style={{color: "red"}}/>
             </Box>
+
+            <Grid container spacing={6}>
+                <Grid item xs={6}>
+                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
+						<Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>Transcript</Typography>
+					</Button>
+                </Grid>
+                <Grid item xs={6}>
+                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
+						<Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>One more time!</Typography>
+					</Button>
+                </Grid>
+            </Grid>
         </div>
 		
 	);
