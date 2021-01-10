@@ -14,13 +14,13 @@ def api():
           principles, and have exquisite interpersonal communciation skills. I know that I can be an asset in any
           company and or situation and I hope that you will consider me for an internship or job
           opportunities! Thank you so much!"""
-    stats = getStats(userInput,"a","../audio-files")
+    stats = getStats(userInput,"a","./audio-files")
     print(stats)
 
     transcription = getTranscription("gs://talko/a.wav")
     print(transcription)
 
-    audioValues = getAudioValues("../audio-files/a.wav")
+    audioValues = getAudioValues("./audio-files/a.wav")
     print(audioValues)
 
     accuracy = getAccuracy(userInput, transcription)
@@ -33,3 +33,4 @@ def api():
       'audioValues': audioValuesList,
       'accuracy': accuracy,
     }
+    return "hello"

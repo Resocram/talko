@@ -1,1 +1,7 @@
 runtime: python37
+manual_scaling:
+        instances: 5
+env_variables:
+        FLASK_APP: "main.py"
+        FLASK_ENV: "development"
+        GOOGLE_APPLICATION_CREDENTIALS: "./gcp-credentials.json"
