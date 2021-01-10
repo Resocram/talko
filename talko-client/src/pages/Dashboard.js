@@ -56,7 +56,7 @@ function Dashboard() {
 				</Grid>
 			</Grid>
 
-            <Box style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "270px", marginTop: "140px", borderRadius: "25px"}}>
+            <div style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "300px", marginTop: "140px", borderRadius: "25px"}}>
                 <Line
                     data={state}
                     options={{
@@ -74,16 +74,27 @@ function Dashboard() {
                     height={1150}
                     options={{maintainAspectRation:false}}
                 />            
-            </Box> 
+            </div> 
 
             <Grid container spacing={6}>
-                <Grid item xs={6}>
-                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
+                <Grid item md={6}>
+                    
+                </Grid>
+                <Grid item md={6}>
+                    <img src={lightbulb} alt="lightbulb" style={{width: "25px", height: "25px", marginLeft: "9rem"}}/>
+                    <Box style={{height: "32px", width: "27rem", border: "5px solid red", borderRadius: "50px"}}></Box>
+                    <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat"}}><strong>Tips and Tricks</strong></Typography>
+                </Grid>
+            </Grid>
+
+            <Grid container spacing={6}>
+                <Grid item md={6}>
+                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px", marginLeft: "220px", marginTop: "120px"}}>
                         <Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>Transcript</Typography>
                     </Button>
                 </Grid>
-                <Grid item xs={6}>
-                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
+                <Grid item md={6}>
+                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px", marginLeft: "200px", marginTop: "120px"}}>
                         <Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>One more time!</Typography>
                     </Button>
                 </Grid>
