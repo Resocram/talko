@@ -15,6 +15,24 @@ const theme = createMuiTheme({
     },
     typography: {
         fontFamily: 'Montserrat'
+    },
+    overrides: {
+        MuiSlider: {
+            rail: {
+                height: '1rem',
+                borderRadius: '10px'
+            },
+            track: {
+                height: '1rem',
+                borderRadius: '10px'
+            },
+            thumb: {
+                width: '2rem',
+                height: '2rem',
+                marginTop: '-10px',
+                marginLeft: '-15px'
+            }
+        }
     }
 });
 
