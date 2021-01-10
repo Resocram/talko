@@ -1,20 +1,22 @@
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Landing from './Landing';
+import Tone from './Tone';
+import Speech from './Speech';
+import Recording from './Recording';
+import Dashboard from './Dashboard';
+import SpeechContext from '../context/speechContext';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SpeechContext>
+      <Navbar />
+      {/* <Landing /> */}
+      {/* <Tone /> */}
+      {/* <Speech /> */}
+      <Recording />
+      {/* <Dashboard /> */}
+    </SpeechContext>
   );
 }
 
