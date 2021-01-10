@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
         width: '50%',
         height: '1rem',
         alignSelf: 'center',
-        marginTop: '5%',
+        marginTop: '8%',
         marginBottom: '3%'
     },
     emojiContainer: {
@@ -52,7 +52,8 @@ const useStyles = makeStyles(theme => ({
         color: 'white'
     },
     button: {
-        color: 'white'
+        color: 'white',
+        textTransform: 'None'
     }
 }));
 
@@ -95,7 +96,7 @@ function Tone() {
             </Grid>
             <Grid container item style={{ marginTop: '3rem', paddingRight: '3rem'}} justify="flex-end">
                 <Button onClick={handleClick} className={classes.button}>
-                    <Typography variant="h4" display="inline"><b>Next</b></Typography>
+                    <Typography variant="h4" display="inline"><b>Next</b></Typography>&nbsp;&nbsp;
                     <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
                 </Button>
             </Grid>

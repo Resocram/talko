@@ -1,22 +1,20 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-<<<<<<< HEAD
-import Recording from './Recording';
-=======
-import Speech from './Speech';
+import Landing from './Landing';
 import Tone from './Tone';
->>>>>>> 587634c6d619a10866b84823452afe14c05ec115
+import Speech from './Speech';
+import Recording from './Recording';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
     <React.Fragment>
       <Navbar />
-<<<<<<< HEAD
-      <Recording />
-=======
+      {/* <Landing /> */}
+      {/* <Tone /> */}
       {/* <Speech /> */}
-      <Tone />
->>>>>>> 587634c6d619a10866b84823452afe14c05ec115
+      <Recording />
+      {/* <Dashboard /> */}
     </React.Fragment>
   );
 }

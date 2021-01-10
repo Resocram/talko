@@ -1,19 +1,42 @@
 import React, { useState } from 'react';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import TextField from '@material-ui/core/TextField';
 
+const useStyles = makeStyles(theme => ({
+    container: {
+        marginLeft: '8%',
+        width: '90%'
+    },
+    title: {
+        color: theme.palette.primary.contrastText
+    },
+    button: {
+		color: 'white',
+		textTransform: 'None'
+    }
+}));
+
 function Speech() {
+    const classes = useStyles();
     const [transcript, setTranscript] = useState('');
+    const [redirect, setRedirect] = useState(false);
 
     const handleChange = (event) => {
         setTranscript(event.target.value);
     };
 
+    const handleClick = () => {
+		setRedirect(true);
+	};
+
 	return (
-		<div> 
-            <Typography varaint="h2" style={{color: "#F2C407", fontSize: "68px", fontFamily: "Montserrat", marginLeft: "8%", marginTop: "10px"}}>What do you wanna say?</Typography>
+		<div className={classes.container}> 
+            <Typography variant="h2" className={classes.title}>
+                <b>What do you wanna say?</b>
+            </Typography>
             <form >
                 <TextField
                     value={transcript}
@@ -23,7 +46,7 @@ function Speech() {
                     InputProps={{style: {fontSize: 30}}}
                     style={{
                         backgroundColor: "#1A2930",
-                        width: "81%",
+                        width: "90%",
                         border: "4px solid #F2C407",
                         height: "230px", 
                         color: "#F2C407",
@@ -32,13 +55,14 @@ function Speech() {
                         paddingLeft: "40px",
                         paddingTop: "20px",
                         borderRadius: "45px",
-                        marginLeft: "8%",
-                        marginRight: "8%"}}
+                    }}
                 />
             </form>
-            <div style={{float: "right", marginRight: "8%", marginTop: "100px"}}>
-                <Button style={{color: "white", fontSize: "26px", fontWeight:"bold", paddingLeft:"60px", marginTop: "-32px"}}>Ready, set, record!</Button>
-                <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
+            <div style={{float: "right", marginRight: "3rem", marginTop: "2rem"}}>
+                <Button onClick={handleClick} className={classes.button}>
+					<Typography variant="h4" display="inline"><b>Ready, set, record!</b></Typography>&nbsp;&nbsp;
+					<ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
+				</Button>
             </div>
 		</div>
 		
