@@ -25,17 +25,17 @@ function Speech() {
     const classes = useStyles();
     const [transcript, setTranscript] = useState('');
     const [redirect, setRedirect] = useState(false);
-    
+
     const handleChange = (event) => {
         setTranscript(event.target.value);
     };
-
+  
     const handleClick = async () => {
         setRedirect(true);
         const res = await axios.get('/api');
     };
-    
-    if (redirect)
+  
+  if (redirect)
         return <Redirect to="/recording" />
 
 	return (
