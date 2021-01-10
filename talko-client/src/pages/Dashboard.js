@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 // import CircularProgress from '../components/CircularProgress';
 import LineChart from '../components/LineChart';
+import BarChart from '../components/BarChart';
 
 const useStyles = makeStyles({
     button: {
@@ -117,7 +118,7 @@ function Dashboard() {
             {/* Tips and Tricks Section */}
             <Grid container spacing={6}>
                 <Grid item xs={6}>
-                    
+                    <BarChart />
                 </Grid>
                 <Grid item container xs={6} direction="row" alignItems="center">
                     <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", margin: '-50 -50 -50 -50' }}/>
