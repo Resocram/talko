@@ -90,7 +90,7 @@ function Dashboard() {
                     <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
                     <Box style={{height: "285px", width: "285px", borderRadius: "50%", backgroundColor: "#3C7C64", marginTop: "-326px", marginLeft: "44px"}}/>
                     <Box style={{height: "230px", width: "230px", borderRadius: "50%", backgroundColor: "#52AA8A", marginTop: "-259px", marginLeft:"71px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-170px", marginLeft: "114px"}}><strong>{accuracy}%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-160px", marginLeft: "118px"}}><strong>{accuracy}%</strong></Typography>
 				</Grid>
                 <Grid item xs={3}>
                     <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "140px", marginLeft: "57px"}}>
@@ -104,13 +104,13 @@ function Dashboard() {
 				</Grid>
                 <Grid item xs={2}>
                     <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-5px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-118px", marginLeft: "38px"}}><strong>79%</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "52px"}}><strong>Enunciation</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-112px", marginLeft: "38px"}}><strong>79%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "70px"}}><strong>Enunciation</strong></Typography>
 				</Grid>
                 <Grid item xs={1}>
                     <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-15px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "10px", marginLeft: "41px"}}><strong>Filler Words</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-181px", marginLeft: "44px"}}><strong>{number_of_pauses}</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "27px", marginLeft: "50px"}}><strong>Filler Words</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-181px", marginLeft: "50px"}}><strong>{number_of_pauses}</strong></Typography>
 				</Grid>
 			</Grid>
 
