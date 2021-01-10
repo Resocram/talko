@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +8,7 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const CustomSlider = withStyles({
     rail: {
@@ -38,8 +40,8 @@ const useStyles = makeStyles(theme => ({
         width: '50%',
         height: '1rem',
         alignSelf: 'center',
-        marginTop: '10%',
-        marginBottom: '2%'
+        marginTop: '5%',
+        marginBottom: '3%'
     },
     emojiContainer: {
         width: '50%',
@@ -48,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     emoji: {
         fontSize: '7rem',
         color: 'white'
+    },
+    button: {
+        color: 'white'
     }
 }));
 
@@ -55,14 +60,18 @@ function Tone() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (event, newValue) => {
+    const handleChange = (_, newValue) => {
         setValue(newValue);
+    };
+
+    const handleClick = () => {
+
     };
 
 	return (
 		<Grid container direction="column" justify="center">
             <Grid item>
-                <Typography variant="h1" align="center" className={classes.title}>
+                <Typography variant="h2" align="center" className={classes.title}>
                     <b>Select Your Tone ...</b>
                 </Typography>
             </Grid>
@@ -83,6 +92,12 @@ function Tone() {
                 <SentimentDissatisfiedIcon className={classes.emoji} />
                 <SentimentSatisfiedIcon className={classes.emoji} />
                 <SentimentSatisfiedAltIcon className={classes.emoji} />
+            </Grid>
+            <Grid container item style={{ marginTop: '3rem', paddingRight: '3rem'}} justify="flex-end">
+                <Button onClick={handleClick} className={classes.button}>
+                    <Typography variant="h4" display="inline"><b>Next</b></Typography>
+                    <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
+                </Button>
             </Grid>
 		</Grid>
 	);
