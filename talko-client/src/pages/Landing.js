@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import Desktop from '../assets/desktop_nobkg.svg';
+import Desktop from '../assets/desktop.svg';
 import Grid from '@material-ui/core/Grid'; 
 
 function Landing() {
@@ -17,7 +17,7 @@ function Landing() {
 					<ArrowForwardIcon style={{fontSize: "40px", marginTop: "10px", color: "white"}} />
 				</Grid>
 				<Grid item xs={2}>
-					<img src={Desktop} style={{width: "25rem", height: "25rem", marginLeft: "9rem", marginTop: "4rem"}}/>
+					<img src={Desktop} alt="desktop" style={{width: "25rem", height: "25rem", marginLeft: "9rem", marginTop: "4rem"}}/>
 				</Grid>
 			</Grid>
 		</div>		
