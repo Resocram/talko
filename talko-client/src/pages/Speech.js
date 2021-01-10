@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -23,13 +24,14 @@ function Speech() {
     const classes = useStyles();
     const [transcript, setTranscript] = useState('');
     const [redirect, setRedirect] = useState(false);
-
+    
     const handleChange = (event) => {
         setTranscript(event.target.value);
     };
 
-    const handleClick = () => {
-		setRedirect(true);
+    const handleClick = async () => {
+        const res = await axios.get('/api');
+        setRedirect(true);
 	};
 
 	return (

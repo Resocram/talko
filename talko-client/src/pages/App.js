@@ -5,17 +5,18 @@ import Tone from './Tone';
 import Speech from './Speech';
 import Recording from './Recording';
 import Dashboard from './Dashboard';
+import SpeechContext from '../context/speechContext';
 
 function App() {
   return (
-    <React.Fragment>
+    <SpeechContext>
       <Navbar />
       {/* <Landing /> */}
       {/* <Tone /> */}
       {/* <Speech /> */}
       <Recording />
       {/* <Dashboard /> */}
-    </React.Fragment>
+    </SpeechContext>
   );
 }
 
