@@ -5,6 +5,10 @@ import { ReactComponent as TalkoLogo } from '../assets/talko-logo.svg';
 function LogoButton() {
     const useStyles = makeStyles({
         root: {
+            width: 100,
+            height: 100,
+            marginTop: -10,
+            marginBottom: -30
         }
     });
 

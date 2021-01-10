@@ -3,12 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 import LogoButton from './LogoButton';
 
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
         backgroundColor: '#1A2930',
+        padding: '2rem'
     },
     tab: {
         color: '#F2C407'
@@ -27,14 +29,14 @@ function Navbar() {
     return (
         <Grid container direction="row" className={classes.root}>
             <LogoButton />
-            <Grid item style={{ flexGrow: 1 }} />
+            <Grid item style={{ flexGrow: 1, height: 0 }} />
             <Tabs
                 value={value}
                 onChange={handleChange}
             >
-                <Tab label="Get Started" className={classes.tab} />
-                <Tab label="Dashboard" className={classes.tab} />
-                <Tab label="About Us" className={classes.tab} />
+                <Tab label={<Typography variant="h6" paragraph><b>Get Started</b></Typography>} className={classes.tab} />
+                <Tab label={<Typography variant="h6" paragraph><b>Dashboard</b></Typography>} className={classes.tab} />
+                <Tab label={<Typography variant="h6" paragraph><b>About Us</b></Typography>} className={classes.tab} />
             </Tabs>
         </Grid>
     );
