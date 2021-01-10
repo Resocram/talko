@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import TextField from '@material-ui/core/TextField';
 
 function Speech() {
+    const [transcript, setTranscript] = useState('');
+
+    const handleChange = (event) => {
+        setTranscript(event.target.value);
+    };
+
 	return (
 		<div> 
             <Typography varaint="h2" style={{color: "#F2C407", fontSize: "68px", fontFamily: "Montserrat", marginLeft: "8%", marginTop: "10px"}}>What do you wanna say?</Typography>
             <form >
-                <TextField 
+                <TextField
+                    value={transcript}
+                    onChange={handleChange}
                     multiline
                     placeholder="Enter your speech here..."
                     InputProps={{style: {fontSize: 30}}}
