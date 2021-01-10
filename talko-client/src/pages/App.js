@@ -9,14 +9,14 @@ import SpeechContext from '../context/speechContext';
 
 function App() {
   return (
-    <SpeechContext>
+    <React.Fragment>
       <Navbar />
       {/* <Landing /> */}
       {/* <Tone /> */}
       {/* <Speech /> */}
-      <Recording />
-      {/* <Dashboard /> */}
-    </SpeechContext>
+      {/* <Recording /> */}
+      <Dashboard />
+    </React.Fragment>
   );
 }
 
