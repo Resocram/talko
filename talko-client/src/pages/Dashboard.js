@@ -81,6 +81,7 @@ function Dashboard() {
 	return (
         <div>
             <Typography variant="h1" paragraph style={{color: "#F2C407", fontFamily: "Righteous", margin: '-1rem 3rem'}}>Dashboard</Typography>
+            <hr style={{backgroundColor: "#F2C407", height: "5px", width: "500px", float: "left", borderColor: "#F2C407", margin: '1rem 3rem'}} />
             <Grid container spacing={1} style={{ height: '100%' }}>
 				<Grid item xs={3} style={{marginLeft:"50px", marginTop: "60px"}}>
                     <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
@@ -115,8 +116,9 @@ function Dashboard() {
                 <LineChart />
             </div> 
 
-            {/* Tips and Tricks Section */}
-            <Grid container spacing={6}>
+
+            {/* Bar Graph & Tips and Tricks Section */}
+            <Grid container spacing={6} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={6}>
                     <BarChart />
                 </Grid>

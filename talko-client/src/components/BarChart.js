@@ -36,7 +36,7 @@ function BarChart(props) {
                             fontColor: '#FFFFFF',
                         },
                         ticks: {
-                            display: true,
+                            display: false,
                             fontColor: '#324F5D'
                         },
                         gridLines: {
@@ -53,7 +53,7 @@ function BarChart(props) {
                             fontColor: '#FFFFFF'
                         },
                         ticks: {
-                            display: true,
+                            display: false,
                             fontColor: '#324F5D'
                         },
                         gridLines: {
@@ -64,7 +64,7 @@ function BarChart(props) {
                 }
             }}
             width={1250}
-            height={1}
+            height={500}
         /> 
     );
 }
