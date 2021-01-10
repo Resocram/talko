@@ -67,8 +67,11 @@ const styles = (theme) => ({
     },
   }))(MuiDialogActions);
 
+  const datas = [goodPerfData, poorPerfData];
+
 function Dashboard() {
-    const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = goodPerfData;
+    const perfData = datas[Math.floor(Math.random() * datas.length)];
+    const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = perfData;
     const { articulation_rate, balance, enunciation, number_of_pauses, original_duration, rate_of_speech, speaking_duration, words_per_min} = stats;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
