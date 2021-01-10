@@ -1,27 +1,20 @@
 import React from 'react';
-import makeStyles from '@material-ui/styles/makeStyles';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Desktop from '../assets/desktop.svg';
+import Grid from '@material-ui/core/Grid'; 
 
-const useStyles = makeStyles(theme => ({
-    title: {
-        color: theme.palette.primary.contrastText
-    }
-}));
-
-function Speakers() {
-    const classes = useStyles();
-
+function Speech() {
 	return (
-		<Grid container justify="center">
-			<Typography variant="h1" align="center" className={classes.title}>
-                <b>What do you wanna say?</b>
-            </Typography>
-            <Grid container item direction="row">
-                
-            </Grid>
-		</Grid>
+		<div> 
+            <Typography varaint="h2" style={{color: "#F2C407", fontSize: "20px", fontFamily: "Montserrat", paddingLeft:"60px", marginTop: "-20px"}}>What do you wanna say?</Typography>
+            <Typography varaint="h3" style={{color: "#F2C407", fontSize: "17px", fontFamily: "Montserrat", paddingLeft:"60px"}}>Talko will work with you to improve enunciation, pace, volume and much more. Input your speech now, and let's get talking!</Typography>
+            <Button style={{color: "white", fontSize: "26px", fontWeight:"bold", paddingLeft:"60px", marginTop: "-30px"}}>Ready, set, record!</Button>
+            <ArrowForwardIcon style={{fontSize: "40px", marginTop: "10px", color: "white"}} />
+		</div>
+		
 	);
 }
 
-export default Speakers;
+export default Speech;
