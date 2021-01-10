@@ -10,17 +10,6 @@ import SpeechContext from '../context/speechContext';
 function App() {
   return (
     <React.Fragment>
-<<<<<<< HEAD
-      <Navbar /> 
-      <Dashboard />
-    </React.Fragment>
-    // {/*<SpeechContext>*/}
-    //   {/* <Landing /> */}
-    //   {/* <Tone /> */}
-    //   {/* <Speech /> */}
-    //   {/* <Dashboard /> */}
-    // {/* </SpeechContext> */}
-=======
       <Navbar />
       {/* <Landing /> */}
       {/* <Tone /> */}
@@ -28,7 +17,6 @@ function App() {
       {/* <Recording /> */}
       <Dashboard />
     </React.Fragment>
->>>>>>> 7f0b4270c6acd556e577245d51dba6af8a840573
   );
 }
 
