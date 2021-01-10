@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { makeStyles, withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -59,15 +60,20 @@ const useStyles = makeStyles(theme => ({
 
 function Tone() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [redirect, setRedirect] = useState(false);
 
     const handleChange = (_, newValue) => {
         setValue(newValue);
     };
 
     const handleClick = () => {
-
+        console.log('Send tone value (0 to 10 inclusive): ', value);
+        setRedirect(true);
     };
+
+    if (redirect)
+        return <Redirect to="/speech" />
 
 	return (
 		<Grid container direction="column" justify="center">

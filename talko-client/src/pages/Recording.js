@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -46,6 +47,9 @@ function Recording() {
 	};
 
     const ins = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
+
+    if (redirect)
+        return <Redirect to="/dashboard" />
     
 	return (
         <React.Fragment>
