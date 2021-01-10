@@ -1,5 +1,5 @@
 import React from 'react';
-import makeStyles from '@material-ui/styles/makeStyles';
+import { makeStyles, withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +7,28 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+
+const CustomSlider = withStyles({
+    rail: {
+        height: '1rem',
+        borderRadius: '10px'
+    },
+    track: {
+        height: '1rem',
+        borderRadius: '10px'
+    },
+    thumb: {
+        width: '2rem',
+        height: '2rem',
+        marginTop: '-10px',
+        marginLeft: '-15px',
+        backgroundColor: '#F2C407',
+        color: 'rgba(242, 196, 7, 0.20)',
+        marginRight: '100px',
+        borderLeft: 'solid 10px #F2C407',
+        borderRight: 'solid 10px #F2C407'
+    }
+})(Slider);
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -24,11 +46,10 @@ const useStyles = makeStyles(theme => ({
         alignSelf: 'center'
     },
     emoji: {
-        fontSize: '10rem',
+        fontSize: '7rem',
         color: 'white'
     }
 }));
-  
 
 function Tone() {
     const classes = useStyles();
@@ -46,7 +67,7 @@ function Tone() {
                 </Typography>
             </Grid>
             <Grid item className={classes.slider}>
-                <Slider
+                <CustomSlider
                     value={value}
                     onChange={handleChange}
                     color="secondary"
