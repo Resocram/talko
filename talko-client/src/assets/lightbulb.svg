@@ -1,6 +1,18 @@
 <svg width="1148" height="849" viewBox="0 0 1148 849" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g opacity="0.3" filter="url(#filter0_d)">
+<ellipse cx="236" cy="308" rx="125" ry="150" fill="#F2C407"/>
+</g>
 <rect y="169.707" width="1050.78" height="687.391" transform="rotate(-9.29432 0 169.707)" fill="url(#pattern0)"/>
 <defs>
+<filter id="filter0_d" x="107" y="158" width="258" height="308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0" transform="translate(0 -0.00954867) scale(0.00163399 0.00249779)"/>
 </pattern>

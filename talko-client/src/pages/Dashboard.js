@@ -1,30 +1,26 @@
 import React, { useState } from 'react';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import lightbulb from '../assets/lightbulb.svg';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Divider from '@material-ui/core/Divider';
-import { Line } from 'react-chartjs-2';
+import LineChart from '../components/LineChart';
 
-const state = {
-    labels: ['1', '2', '3', '4', '5'],
-    datasets: [
-        {
-            label: 'Energy',
-            fill: false,
-            lineTension: 0.5,
-            backgroundColor: '#324F5D',
-            borderColor: 'white',
-            borderWidth: 2,
-            data: [35, 21, 18, 37, 26]
-        }
-    ],
-    height: '200px'
-};
+const useStyles = makeStyles({
+    button: {
+		color: 'white',
+        textTransform: 'None',
+        padding: '0.5rem 2rem',
+        border: '3px solid #F2C407',
+        borderRadius: '5rem'
+    }
+});
 
 function Dashboard() {
+    const classes = useStyles();
+
 	return (
         <div>
             <Grid container spacing={1} style={{ height: '100%' }}>
@@ -56,40 +52,38 @@ function Dashboard() {
 				</Grid>
 			</Grid>
 
-            <Box style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "270px", marginTop: "140px", borderRadius: "25px"}}>
-                <Line
-                    data={state}
-                    options={{
-                        title:{
-                            display:true,
-                            //text:'Average Rainfall per month',
-                            fontSize:15
-                        },
-                        legend:{
-                            display:true,
-                            position:'right'
-                        }
-                    }}
-                    width={1250}
-                    height={1150}
-                    options={{maintainAspectRation:false}}
-                />            
-            </Box> 
+            {/* Energy over Time Line Chart */}
+            <div style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "300px", marginTop: "140px", borderRadius: "25px", padding: '2rem'}}>
+                <LineChart />
+            </div> 
 
+            {/* Tips and Tricks Section */}
             <Grid container spacing={6}>
                 <Grid item xs={6}>
-                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
-                        <Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>Transcript</Typography>
-                    </Button>
+                    
                 </Grid>
-                <Grid item xs={6}>
-                    <Button style={{backgroundColor: "#1A2930", height: "50px", width: "200px", border: "2px solid #F2C407", color: "white", borderRadius: "15px"}}>
-                        <Typography variant="h3" style={{fontFamily: "Montserrat", fontSize: "18px"}}>One more time!</Typography>
-                    </Button>
+                <Grid item container xs={6} direction="row" alignItems="center">
+                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", margin: '-50 -50 -50 -50' }}/>
+                   
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat"}}><strong>Tips and Tricks</strong></Typography>
                 </Grid>
             </Grid>
+
+            {/* Button Group */}
+            <Grid container spacing={6} direction="row" justify="space-evenly">
+                <Grid item>
+                    <Button className={classes.button}>
+						<Typography variant="h5"><b>Transcript</b></Typography>
+					</Button>
+                </Grid>
+                <Grid item>
+                    <Button className={classes.button}>
+						<Typography variant="h5"><b>One More Time!</b></Typography>
+					</Button>
+                </Grid>
+            </Grid>
+
         </div>
-		
 	);
 }
 
