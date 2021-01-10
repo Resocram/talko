@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -18,11 +18,6 @@ const useStyles = makeStyles({
 
 function Landing() {
 	const classes = useStyles();
-	const [redirect, setRedirect] = useState(false);
-
-	const handleClick = () => {
-		setRedirect(true);
-	};
 
 	return (
 		<div style={{width:"60%"}}> 
@@ -32,7 +27,7 @@ function Landing() {
 					<Typography varaint="h2" style={{color: "#F2C407", fontSize: "20px", marginTop: "-20px"}}><strong>Receive INSTANT feedback on your public speaking skills.</strong></Typography>
 					<Typography varaint="h3" style={{color: "#F2C407", fontSize: "17px"}}>Talko will work with you to improve enunciation, pace, volume and much more. Input your speech now, and let's get talking!</Typography>
 					<br />
-					<Button onClick={handleClick} className={classes.button}>
+					<Button href="/tone" className={classes.button}>
 						<Typography variant="h4" display="inline"><b>Get Started</b></Typography>&nbsp;&nbsp;
 						<ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
 					</Button>
