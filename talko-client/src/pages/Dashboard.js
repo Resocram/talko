@@ -7,6 +7,10 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LineChart from '../components/LineChart';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 
 const useStyles = makeStyles({
     button: {
@@ -24,6 +28,7 @@ function Dashboard() {
 	return (
         <div>
             <Typography variant="h1" paragraph style={{color: "#F2C407", fontFamily: "Righteous", margin: '-1rem 3rem'}}>Dashboard</Typography>
+            <hr style={{backgroundColor: "#F2C407", height: "5px", width: "500px", float: "left", borderColor: "#F2C407", margin: '1rem 3rem'}} />
             <Grid container spacing={1} style={{ height: '100%' }}>
 				<Grid item xs={3} style={{marginLeft:"50px", marginTop: "60px"}}>
                     <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
@@ -58,7 +63,8 @@ function Dashboard() {
                 <LineChart />
             </div> 
 
-            {/* Tips and Tricks Section */}
+
+            {/* Bar Graph & Tips and Tricks Section */}
             <Grid container spacing={6}>
                 <Grid item xs={6}>
                     
