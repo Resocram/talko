@@ -1,9 +1,7 @@
-import flask
+from flask import Flask
 
-app = flask.Flask("__main__")
+app = Flask(__name__)
 
-@app.route("/")
-def my_index():
-    return flask.render_template("index.html", token="Hello Flask + React")
-
-app.run(debug=True)
+@app.route('/api', methods=['GET'])
+def api():
+    return 'Bye World'
