@@ -4,11 +4,11 @@ import wave, numpy, struct, matplotlib.pyplot as plt
 import syllables
 from fuzzywuzzy import fuzz
 
-def getStats(file,directory):
+def getStats(file, directory):
     mysp=__import__("my-voice-analysis")
     p=path # Audio File Name
     c=directory # Path to the Audio File Directory
-    return mysp.mysptotal(p,c)   
+    return mysp.mysptotal(p,c)
 
 def getAccuracy(userInput,transcribed):
     return fuzz.ratio(userInput,transcribed)
