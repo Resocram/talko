@@ -14,10 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 // import CircularProgress from '../components/CircularProgress';
 import LineChart from '../components/LineChart';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import BarChart from '../components/BarChart';
 
 const useStyles = makeStyles({
     button: {
@@ -121,9 +118,9 @@ function Dashboard() {
 
 
             {/* Bar Graph & Tips and Tricks Section */}
-            <Grid container spacing={6}>
+            <Grid container spacing={6} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={6}>
-                    
+                    <BarChart />
                 </Grid>
                 <Grid item container xs={6} direction="row" alignItems="center">
                     <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", marginLeft: "55px", marginTop: "-65px"}}/>
