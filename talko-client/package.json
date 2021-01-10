@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
+    "blob-converter": "^1.0.0",
     "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
     "path": "^0.12.7",

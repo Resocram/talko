@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { convert } from 'blob-converter'
 import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -43,7 +45,14 @@ function Recording() {
     };
 
 	const handleClick = () => {
-		setRedirect(true);
+        const convertToData = async () => {
+            const data = await convert(audioBlob, 'dataURL')
+            console.log(data);
+            axios.post('http://localhost:8000/upload', data);
+            setRedirect(true);
+           
+        }
+        convertToData();
 	};
 
     const ins = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
