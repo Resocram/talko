@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Mic from '../assets/mic.svg';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 // Audio Recorder Dependencies
 import { ReactMic } from 'react-mic';
@@ -30,6 +31,7 @@ function Recording() {
     const [record, setRecord] = useState(false);
     const [audioBlob, setAudioBlob] = useState(null);
     const [redirect, setRedirect] = useState(false);
+    const [waitingRes, setWaitingRes] = useState(false);
 
     const handleRecord = () => {
         setRecord(!record);
@@ -45,6 +47,7 @@ function Recording() {
     };
 
 	const handleClick = () => {
+        setWaitingRes(true);
         // const convertToData = async () => {
         //     const data = await convert(audioBlob, 'dataURL')
         //     console.log(data);
@@ -61,6 +64,9 @@ function Recording() {
 
     if (redirect)
         return <Redirect to="/dashboard" />
+
+    if (waitingRes)
+    return <LoadingSpinner />
     
 	return (
         <React.Fragment>
