@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -27,10 +29,14 @@ function Speech() {
     const handleChange = (event) => {
         setTranscript(event.target.value);
     };
-
-    const handleClick = () => {
-		setRedirect(true);
-	};
+  
+    const handleClick = async () => {
+        setRedirect(true);
+        const res = await axios.get('/api');
+    };
+  
+  if (redirect)
+        return <Redirect to="/recording" />
 
 	return (
 		<div className={classes.container}> 
