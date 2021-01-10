@@ -18,7 +18,7 @@ const state = {
             backgroundColor: '#324F5D',
             borderColor: 'white',
             borderWidth: 2,
-            data: [65, 59, 80, 81, 56]
+            data: [35, 21, 18, 37, 26]
         }
     ],
     height: '200px'
@@ -70,7 +70,9 @@ function Dashboard() {
                             position:'right'
                         }
                     }}
-                    style={{color: "white", backgroundColor: "red"}}
+                    width={1250}
+                    height={1150}
+                    options={{maintainAspectRation:false}}
                 />            
             </Box> 
 
