@@ -4,7 +4,10 @@ import Landing from './Landing';
 
 function App() {
   return (
-    <Navbar />
+    <React.Fragment>
+      <Navbar />
+      <Landing />
+    </React.Fragment>
   );
 }
 
