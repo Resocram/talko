@@ -108,8 +108,8 @@ function Dashboard() {
 				</Grid>
                 <Grid item xs={2}>
                     <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-5px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-118px", marginLeft: "38px"}}><strong>{enunciation}%</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "52px"}}><strong>Enunciation</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-112px", marginLeft: "38px"}}><strong>79%</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "24px", marginTop: "70px"}}><strong>Enunciation</strong></Typography>
 				</Grid>
                 <Grid item xs={1}>
                     <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-15px"}}/>
