@@ -14,7 +14,7 @@ function App() {
       {/* <Landing /> */}
       {/* <Tone /> */}
       {/* <Speech /> */}
-      <Recording />
+      <Landing />
       {/* <Dashboard /> */}
     </React.Fragment>
   );
