@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
@@ -35,9 +36,24 @@ function Navbar() {
                     value={value}
                     onChange={handleChange}
                 >
-                    <Tab label={<Typography variant="body1" paragraph><b>Get Started</b></Typography>} className={classes.tab} />
-                    <Tab label={<Typography variant="body1" paragraph><b>Dashboard</b></Typography>} className={classes.tab} />
-                    <Tab label={<Typography variant="body1" paragraph><b>About Us</b></Typography>} className={classes.tab} />
+                    <Link to="/">
+                        <Tab 
+                            label={<Typography variant="body1" paragraph><b>Get Started</b></Typography>}
+                            className={classes.tab}
+                        />
+                    </Link>
+                    <Link to="/dashboard">
+                        <Tab
+                            label={<Typography variant="body1" paragraph><b>Dashboard</b></Typography>}
+                            className={classes.tab}
+                        />
+                    </Link>
+                    <Link to="/about">
+                        <Tab
+                            label={<Typography variant="body1" paragraph><b>About Us</b></Typography>}
+                            className={classes.tab}
+                        />
+                    </Link>
                 </Tabs>
             </Grid>
         </Grid>

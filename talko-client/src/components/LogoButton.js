@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
 import { ReactComponent as TalkoLogo } from '../assets/talko-logo.svg';
 
@@ -14,7 +15,9 @@ function LogoButton() {
     const classes = useStyles();
 
     return (
-        <TalkoLogo className={classes.root} />
+        <Link to="/">
+            <TalkoLogo className={classes.root} />
+        </Link>
     );
 }
 

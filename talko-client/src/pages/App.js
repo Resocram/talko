@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Landing from './Landing';
 import Tone from './Tone';
@@ -9,14 +10,36 @@ import SpeechContext from '../context/speechContext';
 
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <Navbar />
-      {/* <Landing /> */}
-      {/* <Tone /> */}
-      {/* <Speech /> */}
-      <Landing />
-      {/* <Dashboard /> */}
-    </React.Fragment>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => <Landing />}
+        />
+        <Route
+          exact
+          path="/tone"
+          render={() => <Tone />}
+        />
+        <Route
+          exact
+          path="/speech"
+          render={() => <Speech />}
+        />
+        <Route
+          exact
+          path="/recording"
+          render={() => <Recording />}
+        />
+        <Route
+          exact
+          path="/dashboard"
+          render={() => <Dashboard />}
+        />
+      </Switch>
+    </Router>
   );
 }
 
