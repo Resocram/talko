@@ -32,8 +32,14 @@ const theme = createMuiTheme({
                 marginTop: '-10px',
                 marginLeft: '-15px'
             }
+        },
+        MuiInputBase: {
+            input: {
+                color:'#F2C407',
+            }
         }
     }
 });
 
 export default responsiveFontSizes(theme);
+ 
