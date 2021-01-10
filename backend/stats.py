@@ -1,14 +1,32 @@
 from google.cloud import speech
 import io
-import wave, numpy, struct, matplotlib.pyplot as plt
+import wave, struct, matplotlib.pyplot as plt
 import syllables
 from fuzzywuzzy import fuzz
 
-def getStats(file, directory):
-    mysp=__import__("my-voice-analysis")
-    p=path # Audio File Name
-    c=directory # Path to the Audio File Directory
-    return mysp.mysptotal(p,c)
+import parselmouth
+from parselmouth.praat import call, run_file
+import pandas as pd
+import numpy as np
+
+def getStats(m,p):
+    sound=p+"/"+m+".wav"
+    sourcerun=p+"/myspsolution.praat"
+    path=p+"/"
+    try:
+        objects= run_file(sourcerun, -20, 2, 0.3, "yes",sound,path, 80, 400, 0.01, capture_output=True)
+        z1=str( objects[1]) # This will print the info from the textgrid object, and objects[1] is a parselmouth.Data object with a TextGrid inside
+        z2=z1.strip().split()
+        z3=np.array(z2)
+        z4=np.array(z3)[np.newaxis]
+        z5=z4.T
+        dataset=pd.DataFrame({"number_ of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
+                          "original_duration":z5[5,:],"balance":z5[6,:],"f0_mean":z5[7,:],"f0_std":z5[8,:],"f0_median":z5[9,:],"f0_min":z5[10,:],"f0_max":z5[11,:],
+                          "f0_quantile25":z5[12,:],"f0_quan75":z5[13,:]})
+        return (dataset)
+    except:
+        print ("Try again the sound of the audio was not clear")
+
 
 def getAccuracy(userInput,transcribed):
     return fuzz.ratio(userInput,transcribed)
@@ -20,6 +38,7 @@ def getTranscription(gcs_uri):
     audio = speech.RecognitionAudio(uri=gcs_uri)
     config = speech.RecognitionConfig(
         language_code="en-US",
+        audio_channel_count=2
     )
 
     operation = client.long_running_recognize(config=config, audio=audio)
@@ -30,18 +49,8 @@ def getTranscription(gcs_uri):
     for result in response.results:
         # The first alternative is the most likely one for this portion.
         words = words + result.alternatives[0].transcript
-    print(words)
     return words
 
-# getTranscription("gs://talko/Obama's jobs speech in 2 minutes.wav")
-# test = """Hello! My name is Andrea sasir, I am studying marketing at the University of Texas at Dallas.
-#         I am a member of American Marketing Association and Alpha Kappa PSI both of which are dedicated to 
-#         shaping future Business Leaders. I hope to incorporate my business knowledge into consumer trend analysis
-#         and strengthening relationships among consumers as well as other companies. I am savvy, social, and 
-#         principles, and have exquisite interpersonal communciation skills. I know that I can be an asset in any
-#         company and or situation and I hope that you will consider me for an internship or job
-#         opportunities! Thank you so much!"""
-# getAccuracy(test,getTranscription("../audio-files/a.wav"))
 def getAudioValues(file):
     w = wave.open(file,"rb")
     p = w.getparams()
@@ -58,25 +67,31 @@ def getAudioValues(file):
     frameArray = w.readframes(frames)
 
     # How many datapoints we want to show 
-    dataPoints = 10
+    dataPoints = 100
+
+    # Points average
+    pointsAverage = 10
 
     # Convert to an array of frames
-    frameArray = numpy.fromstring(frameArray, numpy.int16)
+    frameArray = np.fromstring(frameArray, np.int16)
 
     # Average non-mono channels into a mono channel
-    frameArray = numpy.mean(frameArray.reshape(-1,channels),axis=1)
+    frameArray = np.mean(frameArray.reshape(-1,channels),axis=1)
 
     # Remove extra frames when averaging
-    additionalFrames = (len(frameArray) % (dataPoints))
+    additionalFrames = (len(frameArray) % (dataPoints * pointsAverage))
 
     frameArray = frameArray[:-additionalFrames]
-    frameArray = numpy.mean(frameArray.reshape(-1,int(len(frameArray)/dataPoints)),axis=1)
+    frameArray = np.mean(frameArray.reshape(-1,int(len(frameArray)/(dataPoints*pointsAverage))),axis=1)
+
+    # Only take the maximum point after every pointsAverage
+    frameArray = np.max(frameArray.reshape(-1,pointsAverage),axis=1)
+
+    poly = np.polyfit(np.arange(dataPoints),frameArray,50)
+    poly_y = np.poly1d(poly)(np.arange(dataPoints))
 
     # Normalize values between 0 and 1 
-    normalize = (frameArray - numpy.min(frameArray)) / (numpy.max(frameArray) - numpy.min(frameArray))
-
-    # plt.plot(normalize)
-    # plt.show()
+    normalize = (poly_y - np.min(poly_y)) / (np.max(poly_y) - np.min(poly_y))
 
     return normalize
 
