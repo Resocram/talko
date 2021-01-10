@@ -126,9 +126,9 @@ function Dashboard() {
                     
                 </Grid>
                 <Grid item container xs={6} direction="row" alignItems="center">
-                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", margin: '-50 -50 -50 -50' }}/>
+                    <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px", marginLeft: "55px", marginTop: "-65px"}}/>
                    
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat"}}><strong>Tips and Tricks</strong></Typography>
+                    <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginTop: "-125px", marginLeft: "-202px"}}><strong>Tips and Tricks</strong></Typography>
                 </Grid>
             </Grid>
 
