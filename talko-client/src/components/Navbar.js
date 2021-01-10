@@ -26,17 +26,15 @@ function Navbar() {
 
     return (
         <Grid container direction="row" className={classes.root}>
+            <LogoButton />
+            <Grid item style={{ flexGrow: 1 }} />
             <Tabs
                 value={value}
                 onChange={handleChange}
             >
-                <LogoButton />
-                <Grid item style={{ flexGrow: 1 }} />
-                <Grid item container>
-                    <Tab label="Get Started" className={classes.tab} />
-                    <Tab label="Dashboard" className={classes.tab} />
-                    <Tab label="About Us" className={classes.tab} />
-                </Grid>
+                <Tab label="Get Started" className={classes.tab} />
+                <Tab label="Dashboard" className={classes.tab} />
+                <Tab label="About Us" className={classes.tab} />
             </Tabs>
         </Grid>
     );
