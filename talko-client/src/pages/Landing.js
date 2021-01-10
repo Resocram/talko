@@ -20,9 +20,7 @@ function Landing() {
 					<img src={Desktop} style={{width: "25rem", height: "25rem", marginLeft: "9rem", marginTop: "4rem"}}/>
 				</Grid>
 			</Grid>
-		</div>
-		// test comment
-		
+		</div>		
 	);
 }
 
