@@ -1,16 +1,16 @@
 from flask import Flask
 import sys
-sys.path.insert(0, '../backend/stats.py')
+sys.path.insert(0, './stats.py')
 from stats import *
 
 app = Flask(__name__)
 
 @app.route('/api', methods=['GET'])
 def api():
-    stats = getStats("a", "../../audio-files")
+    stats = getStats("userInput","a","../../audio-files")
     print(stats)
 
-    transcription = getTranscription("../../audio-files/a.wav")
+    transcription = getTranscription("gs://talko/a.wav")
     print(transcription)
 
     audioValues = getAudioValues("../../audio-files/a.wav")
@@ -24,6 +24,13 @@ def api():
             company and or situation and I hope that you will consider me for an internship or job
             opportunities! Thank you so much!"""
 
-    accuracy = getAccuracy(userInput,getTranscription("../../audio-files/a.wav"))
+    accuracy = getAccuracy(userInput, transcription)
     print(accuracy)
-    return 'heo'
+
+
+    return {
+      stats: stats,
+      transcription: transcription,
+      audioValues: audioValues,
+      accuracy: accuracy
+    }
