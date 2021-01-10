@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import TalkoLogo from '../assets/talko-logo.svg';
 
 const useStyles = makeStyles({
     root: {
@@ -23,11 +24,12 @@ function Navbar() {
     };
 
     return (
-        <Grid direction="row" justify="flex-end" className={classes.root}>
+        <Grid container direction="row" justify="flex-end" className={classes.root}>
             <Tabs
                 value={value}
                 onChange={handleChange}
             >
+                <img src={TalkoLogo} alt="talko-logo" />
                 <Tab label="Get Started" className={classes.tab} />
                 <Tab label="Dashboard" className={classes.tab} />
                 <Tab label="About Us" className={classes.tab} />
