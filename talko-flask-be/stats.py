@@ -22,6 +22,12 @@ def read_file(bucket_name,blob,destination):
     blob = bucket.blob(blob)
     blob.download_to_filename(destination)
 
+
+
+# def getBucketAndBlob(url):
+#     words = url.split('/')
+#     return (words[len(words)-2], words[len(words)-1])
+
 # params:
 # text is the passage the user wants to write
 # m is the name of the .wav file without the .wav extension
@@ -51,8 +57,7 @@ def getStats(text,m,p):
         z5=z4.T
 
         words = len(text.split())
-        test = syllables.estimate(text)
-        words_per_min = int(int(z5[2,:]) * words/(syllables.estimate(text)) * 60)
+        words_per_min = int(words/(original_duration/60))
 
         dataset=pd.DataFrame({"number_of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
                           "original_duration":z5[5,:],"balance":z5[6,:],"words_per_min":words_per_min})
@@ -84,6 +89,7 @@ def getTranscription(gcs_uri):
 
     audio = speech.RecognitionAudio(uri=gcs_uri)
     config = speech.RecognitionConfig(
+        sample_rate_hertz=44100,
         language_code="en-US",
         audio_channel_count=2
     )
@@ -97,7 +103,6 @@ def getTranscription(gcs_uri):
         # The first alternative is the most likely one for this portion.
         words = words + result.alternatives[0].transcript
     return words
-
 # params:
 # file is the filename
 #
