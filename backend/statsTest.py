@@ -3,14 +3,11 @@ sys.path.insert(0, './stats.py')
 from stats import *
 
 
-stats = getStats("a","../audio-files")
-print(stats)
+# transcription = getTranscription("gs://talko/a.wav")
+# print(transcription)
 
-transcription = getTranscription("gs://talko/a.wav")
-print(transcription)
-
-audioValues = getAudioValues("../audio-files/c.wav")
-print(audioValues)
+# audioValues = getAudioValues("../audio-files/c.wav")
+# print(audioValues)
 
 
 userInput = """Hello! My name is Andrea sasir, I am studying marketing at the University of Texas at Dallas.
@@ -21,5 +18,8 @@ userInput = """Hello! My name is Andrea sasir, I am studying marketing at the Un
         company and or situation and I hope that you will consider me for an internship or job
         opportunities! Thank you so much!"""
 
-accuracy = getAccuracy(userInput,getTranscription("gs://talko/a.wav"))
-print(accuracy)
+stats = getStats(userInput,"a","../audio-files")
+print(stats)
+
+# accuracy = getAccuracy(userInput,getTranscription("gs://talko/a.wav"))
+# print(accuracy)

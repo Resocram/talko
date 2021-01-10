@@ -9,7 +9,7 @@ from parselmouth.praat import call, run_file
 import pandas as pd
 import numpy as np
 
-def getStats(m,p):
+def getStats(text,m,p):
     sound=p+"/"+m+".wav"
     sourcerun=p+"/myspsolution.praat"
     path=p+"/"
@@ -20,9 +20,14 @@ def getStats(m,p):
         z3=np.array(z2)
         z4=np.array(z3)[np.newaxis]
         z5=z4.T
+
+        words = len(text.split())
+        test = syllables.estimate(text)
+        words_per_min = int(int(z5[2,:]) * words/(syllables.estimate(text)) * 60)
+
         dataset=pd.DataFrame({"number_ of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
                           "original_duration":z5[5,:],"balance":z5[6,:],"f0_mean":z5[7,:],"f0_std":z5[8,:],"f0_median":z5[9,:],"f0_min":z5[10,:],"f0_max":z5[11,:],
-                          "f0_quantile25":z5[12,:],"f0_quan75":z5[13,:]})
+                          "f0_quantile25":z5[12,:],"f0_quan75":z5[13,:],"words_per_min":words_per_min})
         return (dataset)
     except:
         print ("Try again the sound of the audio was not clear")
@@ -95,6 +100,4 @@ def getAudioValues(file):
 
     return normalize
 
-def getWordPerMin(text):
-    # TODO
-    print (syllables.estimate(text))
+
