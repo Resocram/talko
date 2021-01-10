@@ -45,6 +45,7 @@ function Speech() {
                 <TextField
                     value={transcript}
                     onChange={handleChange}
+                    rowsMax={6}
                     multiline
                     placeholder="Enter your speech here..."
                     InputProps={{style: {fontSize: 30}}}
