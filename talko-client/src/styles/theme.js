@@ -1,16 +1,16 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
+// Import app color scheme
+import * as COLORS from '../constants/colors';
+
 const theme = createMuiTheme({
     palette: {
         primary: {
-            light: '#F2C407',
-            main: '#1A2930',
-            dark: '#F2C407',
-            contrastText: '#F2C407'
+            main: COLORS.MAIN_BLUE,
+            contrastText: COLORS.MAIN_YELLOW,
         },
         secondary: {
-            light: '#F2C407',
-            main: '#F2C407'
+            main: COLORS.MAIN_YELLOW
         }
     },
     typography: {
@@ -35,7 +35,7 @@ const theme = createMuiTheme({
         },
         MuiInputBase: {
             input: {
-                color:'#F2C407',
+                color: COLORS.MAIN_YELLOW
             }
         }
     }

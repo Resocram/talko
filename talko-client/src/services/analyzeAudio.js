@@ -5,6 +5,8 @@ const SERVER_ENDPOINT = 'https://cors-anywhere.herokuapp.com/http://talko-301223
 /**
  * Get speech audio analysis result back from backend service.
  * 
+ * @param {Blob} audioBlob An audio blob containing user's recorded speech.
+ * 
  * @return {Promise<any>}
  */
 const analyzeAudio = (audioBlob) => {
