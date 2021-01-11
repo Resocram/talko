@@ -47,17 +47,25 @@ function Recording() {
     };
 
 	const handleClick = () => {
-        setWaitingRes(true);
-        // const convertToData = async () => {
-        //     const data = await convert(audioBlob, 'dataURL')
-        //     console.log(data);
-        //     axios.post('http://localhost:8000/upload', data);
-        //     setRedirect(true);
-           
-        // }
-        // convertToData();
-        // Simulating request
-        setTimeout(function(){ setRedirect(true); }, 2000);
+        const convertToData = async () => {
+            let formData = new FormData()
+            let textBlob = new Blob(["string"], { type: "text/xml"});
+            console.log(audioBlob)
+            formData.append('audio', audioBlob.blob)
+            formData.append('text', textBlob)
+
+            axios.post('https://cors-anywhere.herokuapp.com/http://talko-301223.wl.r.appspot.com/api',formData,{timeout: 300000})
+             .then(resp => console.log(resp))
+            //  .then(data => {
+            //     if (data.errors) {
+            //        alert(data.errors)
+            //     }
+            //     else {
+            //        console.log(data)
+            //     }
+            //  })
+        }
+        convertToData();
 	};
 
     const ins = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
