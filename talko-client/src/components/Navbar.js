@@ -35,7 +35,7 @@ function Navbar() {
             <Grid item style={{ flexGrow: 1, height: 0 }} />
             <Grid item>
                 <Tabs
-                    value={tabIndex[location.pathname]}
+                    value={tabIndex[location.pathname] || 0}
                 >
                     
                     <Tab 

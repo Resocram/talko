@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { convert } from 'blob-converter'
+
+// Style components import
 import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Mic from '../assets/mic.svg';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Mic from '../assets/mic.svg';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// Audio Recorder Dependencies
+// Services import
+import analyzeAudio from '../services/analyzeAudio';
+
+// Audio Recorder Library
 import { ReactMic } from 'react-mic';
+
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -26,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+
 function Recording() {
     const classes = useStyles();
     const [record, setRecord] = useState(false);
@@ -33,42 +38,21 @@ function Recording() {
     const [redirect, setRedirect] = useState(false);
     const [waitingRes, setWaitingRes] = useState(false);
 
-    const handleRecord = () => {
-        setRecord(!record);
-    };
+    const handleRecord = () => setRecord(!record);
 
-    const onData = (recordedBlob) => {
-        console.log('chunk of real-time data is: ', recordedBlob);
-    };
-
-    const onStop = (recordedBlob) => {
-        console.log('recordedBlob is: ', recordedBlob);
-        setAudioBlob(recordedBlob);
-    };
+    const onStop = (recordedBlob) => setAudioBlob(recordedBlob);
 
 	const handleClick = () => {
-        const convertToData = async () => {
-            let formData = new FormData()
-            let textBlob = new Blob(["string"], { type: "text/xml"});
-            console.log(audioBlob)
-            formData.append('audio', audioBlob.blob)
-            formData.append('text', textBlob)
+        setWaitingRes(true);
+        analyzeAudio(audioBlob)
+            .then(data => {
+                console.log('Analyzed result: ', data);
+                setRedirect(true);
+            })
+            .catch(err => console.log(err));
+    };
 
-            axios.post('https://cors-anywhere.herokuapp.com/http://talko-301223.wl.r.appspot.com/api',formData,{timeout: 300000})
-             .then(resp => console.log(resp))
-            //  .then(data => {
-            //     if (data.errors) {
-            //        alert(data.errors)
-            //     }
-            //     else {
-            //        console.log(data)
-            //     }
-            //  })
-        }
-        convertToData();
-	};
-
-    const ins = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
+    const instruction = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
 
     if (redirect)
         return <Redirect to="/dashboard" />
@@ -79,35 +63,48 @@ function Recording() {
 	return (
         <React.Fragment>
             <Grid container direction="column" justify="center">
+
+                {/* Title */}
                 <Grid item container justify="center">
                     <Typography variant="h2" align="center" className={classes.title}>
-                        <b>{ins}</b>
+                        <b>{instruction}</b>
                     </Typography>
                 </Grid>
+
+                {/* Newline */}
                 <br/>
                 <br/>
+
+                {/* Sound Wave from react-mic */}
                 <ReactMic
                     record={record}
                     className="sound-wave"
                     onStop={onStop}
-                    onData={onData}
                     strokeColor="#F2C407"
                     backgroundColor="#1A2930"
                 />
+
+                {/* Recording button */}
                 <Box style={{border: "4px solid #C75943", height: "112px", width: "112px", borderRadius: "50%", marginLeft:"655px", marginTop: "30px"}}/>
                 <Box style={{border: "4px solid #C75943", height: "145px", width: "145px", borderRadius: "50%", marginLeft:"638px", marginTop: "-136px"}}/>
                 <Button onClick={handleRecord}>
                     <img src={Mic} alt="Mic" style={{width: "75px", height: "75px", marginLeft: "60px", marginTop: "-168px"}}/>
                 </Button>
+
             </Grid>
+
+            {/* Newline */}
             <br />
-            {ins === 'Done!' &&
+
+            {/* Next step button */}
+            {instruction === 'Done!' &&
             <Grid container justify="flex-end" >
                 <Button onClick={handleClick} className={classes.button}>
                     <Typography variant="h4" display="inline"><b>See Results</b></Typography>&nbsp;&nbsp;
                     <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
                 </Button>
             </Grid>}
+
         </React.Fragment>
 	);
 }

@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Desktop from '../assets/desktop.svg';
 import Grid from '@material-ui/core/Grid'; 
-import MonitorDash from '../assets/monitorDash.svg'
+import MonitorDash from '../assets/monitor-dash.svg'
 
 const useStyles = makeStyles({
 	container: {

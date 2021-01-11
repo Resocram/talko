@@ -15,7 +15,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // import CircularProgress from '../components/CircularProgress';
 import LineChart from '../components/LineChart';
 import BarChart from '../components/BarChart';
-import { goodPerfData, poorPerfData } from '../sampleData';
+import { goodPerfData, poorPerfData } from '../constants/sampleData';
 
 const useStyles = makeStyles({
     button: {
