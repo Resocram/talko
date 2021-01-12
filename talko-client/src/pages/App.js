@@ -11,6 +11,7 @@ import Speech from './Speech';
 import Recording from './Recording';
 import Dashboard from './Dashboard';
 import About from './About';
+import Error from './Error';
 
 // Contexts: To enable information-sharing between siblings
 import AppContext from '../contexts/AppContext';
@@ -70,6 +71,7 @@ function App() {
               path={ROUTES.ABOUT}
               render={() => <About />}
             />
+            <Route component={Error} />
           </Switch>
         </Box>
       </Router>

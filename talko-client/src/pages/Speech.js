@@ -86,15 +86,6 @@ function Speech() {
                             }
                         }}
                         className={classes.textfield}
-                        style={{
-                            // width: "90%",
-                            // border: "4px solid #F2C407",
-                            // height: "230px", 
-                            // fontSize: "35px",
-                            // marginTop: "20px",
-                            // paddingLeft: "40px",
-                            // paddingTop: "20px",
-                        }}
                     />
                 </form>
             </Grid>

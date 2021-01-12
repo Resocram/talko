@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import AppContext from '../contexts/AppContext';
 
 // Style components import
 import makeStyles from '@material-ui/styles/makeStyles';
-import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import MicIcon from '@material-ui/icons/Mic';
 import Mic from '../assets/mic.svg';
 import LoadingSpinner from '../components/LoadingSpinner';
+
+// Constants import
+import { DASHBOARD, ERROR } from '../constants/routes';
+import { MAIN_YELLOW, MAIN_BLUE, CORAL_RED } from '../constants/colors';
 
 // Services import
 import analyzeAudio from '../services/analyzeAudio';
@@ -19,24 +25,51 @@ import { ReactMic } from 'react-mic';
 
 
 const useStyles = makeStyles(theme => ({
+    container: {
+		color: theme.palette.secondary.main,
+		height: '82vh'
+	},
     title: {
-        color: theme.palette.primary.contrastText,
-        width: '50%'
+        maxWidth: '50%',
+        minHeight: '27.8%'
+    },
+    grow: {
+        flexGrow: 1
+    },
+    micContainer: {
+        width: '90vw'
+    },
+    mic: { 
+        width: '100%'
+    },
+    iconButton: {
+        border: `solid 5px ${CORAL_RED}`
+    },
+    micIcon: {
+        fontSize: '5rem'
     },
     button: {
 		color: 'white',
-        textTransform: 'None',
-        marginRight: "3rem"
+		textTransform: 'None',
+		display: 'flex',
+		direction: 'row',
+		alignItems: 'center',
+		width: 'fit-content'
+	},
+	buttonIcon: {
+		fontSize: '40px',
+		color: 'white'
     }
 }));
 
-
 function Recording() {
     const classes = useStyles();
+    const { state, setAudioBlob } = useContext(AppContext);
+    const { audioBlob } = state;
     const [record, setRecord] = useState(false);
-    const [audioBlob, setAudioBlob] = useState(null);
     const [redirect, setRedirect] = useState(false);
     const [waitingRes, setWaitingRes] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleRecord = () => setRecord(!record);
 
@@ -49,63 +82,63 @@ function Recording() {
                 console.log('Analyzed result: ', data);
                 setRedirect(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(true);
+            });
     };
 
-    const instruction = record ? 'Recording...' : (!audioBlob ? 'Press the icon to start recording your speech' : 'Done!');
+    const instruction = record ? 'Recording...' : (!audioBlob ? 'Press on the icon to start recording ...' : 'Done!');
+
+    if (error)
+        return <Redirect to={ERROR} />
 
     if (redirect)
-        return <Redirect to="/dashboard" />
+        return <Redirect to={DASHBOARD} />
 
     if (waitingRes)
-    return <LoadingSpinner />
+        return <LoadingSpinner />
     
 	return (
-        <React.Fragment>
-            <Grid container direction="column" justify="center">
-
-                {/* Title */}
-                <Grid item container justify="center">
-                    <Typography variant="h2" align="center" className={classes.title}>
-                        <b>{instruction}</b>
-                    </Typography>
-                </Grid>
-
-                {/* Newline */}
-                <br/>
-                <br/>
-
-                {/* Sound Wave from react-mic */}
-                <ReactMic
-                    record={record}
-                    className="sound-wave"
-                    onStop={onStop}
-                    strokeColor="#F2C407"
-                    backgroundColor="#1A2930"
-                />
-
-                {/* Recording button */}
-                <Box style={{border: "4px solid #C75943", height: "112px", width: "112px", borderRadius: "50%", marginLeft:"655px", marginTop: "30px"}}/>
-                <Box style={{border: "4px solid #C75943", height: "145px", width: "145px", borderRadius: "50%", marginLeft:"638px", marginTop: "-136px"}}/>
-                <Button onClick={handleRecord}>
-                    <img src={Mic} alt="Mic" style={{width: "75px", height: "75px", marginLeft: "60px", marginTop: "-168px"}}/>
-                </Button>
-
+        <Grid container direction="column" alignItems="center" alignContent="space-between" spacing={2} className={classes.container}>
+            {/* Title */}
+            <Grid item className={classes.title}>
+                <Typography variant="h2" align="center" paragraph>
+                    <b>{instruction}</b>
+                </Typography>
             </Grid>
 
-            {/* Newline */}
-            <br />
+            {/* Sound Wave from react-mic */}
+            <Grid item className={classes.micContainer}>
+                <ReactMic
+                    record={record}
+                    className={classes.mic}
+                    onStop={onStop}
+                    strokeColor={MAIN_YELLOW}
+                    backgroundColor={MAIN_BLUE}
+                />
+            </Grid>
+
+            {/* Recording button */}
+            <Grid item>
+                <IconButton onClick={handleRecord} className={classes.iconButton}>
+                    <MicIcon color="secondary" className={classes.micIcon} />
+                </IconButton>
+            </Grid>
+
+            <Grid item className={classes.grow} />
 
             {/* Next step button */}
-            {instruction === 'Done!' &&
-            <Grid container justify="flex-end" >
-                <Button onClick={handleClick} className={classes.button}>
-                    <Typography variant="h4" display="inline"><b>See Results</b></Typography>&nbsp;&nbsp;
-                    <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
+            <Grid container item justify="flex-end">
+                <Button disabled={!(instruction === 'Done!')} onClick={handleClick} className={classes.button}>
+                    <Typography variant="h4" display="inline">
+                        <b>See Results</b>
+                    </Typography>
+                    &nbsp;&nbsp;
+                    <ArrowForwardIcon className={classes.buttonIcon} />
                 </Button>
-            </Grid>}
-
-        </React.Fragment>
+            </Grid>
+        </Grid>
 	);
 }
 

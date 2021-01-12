@@ -7,3 +7,4 @@ export const LANDING = '/';
 export const RECORDING = '/recording';
 export const SPEECH = '/speech';
 export const TONE = '/tone';
+export const ERROR = '/404';
