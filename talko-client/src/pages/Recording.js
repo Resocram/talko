@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import MicIcon from '@material-ui/icons/Mic';
-import Mic from '../assets/mic.svg';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 // Constants import
@@ -57,8 +56,7 @@ const useStyles = makeStyles(theme => ({
 		width: 'fit-content'
 	},
 	buttonIcon: {
-		fontSize: '40px',
-		color: 'white'
+		fontSize: '40px'
     }
 }));
 
@@ -135,7 +133,7 @@ function Recording() {
                         <b>See Results</b>
                     </Typography>
                     &nbsp;&nbsp;
-                    <ArrowForwardIcon className={classes.buttonIcon} />
+                    <ArrowForwardIcon className={classes.buttonIcon} style={{ color: (instruction === 'Done!') ? 'white' : 'rgba(0, 0, 0, 0.26)' }} />
                 </Button>
             </Grid>
         </Grid>
