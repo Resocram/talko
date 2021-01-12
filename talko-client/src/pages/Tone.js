@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme => ({
     slider: {
         width: '50%',
         height: '1rem',
-        marginTop: '8%',
-        marginBottom: '4%'
+        // marginTop: '8%',
+        // marginBottom: '4%'
     },
     emojiContainer: {
         width: '50%'
@@ -75,7 +75,9 @@ function Tone() {
                 </Typography>
             </Grid>
 
-            {/* Silder */}
+            <Grid item className={classes.grow} />
+
+            {/* Slider */}
             <Grid item className={classes.slider}>
                 <Slider
                     value={tone}
@@ -88,6 +90,8 @@ function Tone() {
                     valueLabelDisplay="on"
                 />
             </Grid>
+
+            <br /><br /><br /><br />
 
             {/* Emojis */}
             <Grid container item direction="row" justify="space-between" className={classes.emojiContainer}>
