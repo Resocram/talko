@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 
 function LineChart({ values }) {
     const state = {
-        // creates array with values 0 - values.length
+        // Creates array with values 0 - values.length
         labels: Array.from(Array(values.length).keys()), 
         datasets: [
             {

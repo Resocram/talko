@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // React components import
+import makeStyles from '@material-ui/styles/makeStyles';
+import Box from '@material-ui/core/Box';
 import Navbar from '../components/Navbar';
 import Landing from './Landing';
 import Tone from './Tone';
@@ -18,7 +20,15 @@ import useAppData from '../hooks/useAppData';
 import * as ROUTES from '../constants/routes';
 
 
+const useStyles = makeStyles({
+	box: {
+    maxWidth: '100%',
+    margin: '0 2rem 2rem 2rem'
+	}
+});
+
 function App() {
+  const classes = useStyles();
   const appData = useAppData();
 
   return (
@@ -28,38 +38,40 @@ function App() {
         <Navbar />
 
         {/* Main pages: route-based rendering */}
-        <Switch>
-          <Route
-            exact
-            path={ROUTES.LANDING}
-            render={() => <Landing />}
-          />
-          <Route
-            exact
-            path={ROUTES.TONE}
-            render={() => <Tone />}
-          />
-          <Route
-            exact
-            path={ROUTES.SPEECH}
-            render={() => <Speech />}
-          />
-          <Route
-            exact
-            path={ROUTES.RECORDING}
-            render={() => <Recording />}
-          />
-          <Route
-            exact
-            path={ROUTES.DASHBOARD}
-            render={() => <Dashboard />}
-          />
-          <Route
-            exact
-            path={ROUTES.ABOUT}
-            render={() => <About />}
-          />
-        </Switch>
+        <Box className={classes.box}>
+          <Switch>
+            <Route
+              exact
+              path={ROUTES.LANDING}
+              render={() => <Landing />}
+            />
+            <Route
+              exact
+              path={ROUTES.TONE}
+              render={() => <Tone />}
+            />
+            <Route
+              exact
+              path={ROUTES.SPEECH}
+              render={() => <Speech />}
+            />
+            <Route
+              exact
+              path={ROUTES.RECORDING}
+              render={() => <Recording />}
+            />
+            <Route
+              exact
+              path={ROUTES.DASHBOARD}
+              render={() => <Dashboard />}
+            />
+            <Route
+              exact
+              path={ROUTES.ABOUT}
+              render={() => <About />}
+            />
+          </Switch>
+        </Box>
       </Router>
     </AppContext.Provider>
   );

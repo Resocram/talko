@@ -1,7 +1,10 @@
 import React from 'react';
+
+// Style components import
+import { lighten, makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -20,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
       position: 'relative'
     },
     bottom: {
-      color: lighten('#F2C407', 0.7)
+      color: lighten(theme.palette.secondary.main, 0.7)
     },
     top: {
-      color: '#F2C407',
+      color: theme.palette.secondary.main,
       animationDuration: '550ms',
       position: 'absolute',
       left: 0
