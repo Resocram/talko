@@ -25,9 +25,7 @@ const useStyles = makeStyles(theme => ({
 	},
     slider: {
         width: '50%',
-        height: '1rem',
-        // marginTop: '8%',
-        // marginBottom: '4%'
+        height: '1rem'
     },
     emojiContainer: {
         width: '50%'
