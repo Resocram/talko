@@ -1,22 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// Style components import
 import makeStyles from '@material-ui/styles/makeStyles';
+import Typography from '@material-ui/core/Typography';
 import { ReactComponent as TalkoLogo } from '../assets/talko-logo.svg';
 
-const useStyles = makeStyles({
+// Constants import
+import { LANDING } from '../constants/routes';
+
+
+const useStyles = makeStyles(theme => ({
     root: {
-        width: '8rem',
-        height: '8rem',
-        marginTop: -30
+        color: theme.palette.secondary.main,
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    logo: {
+        width: '4rem',
+        height: '4rem',
+        
+    },
+    logoText: {
+        fontFamily: "Righteous"
     }
-});
+}));
 
 function LogoButton() {
     const classes = useStyles();
 
     return (
-        <Link to="/">
-            <TalkoLogo className={classes.root} />
+        <Link to={LANDING} className={classes.root}>
+            {/* Logo Image */}
+            <TalkoLogo className={classes.logo} />
+
+            {/* Spacing */}
+            &nbsp;&nbsp;
+
+            {/* Logo Text */}
+            <Typography variant="h4" className={classes.logoText}>Talko.</Typography>
         </Link>
     );
 }
