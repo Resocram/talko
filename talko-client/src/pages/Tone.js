@@ -1,90 +1,84 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { makeStyles, withStyles } from '@material-ui/styles';
+import AppContext from '../contexts/AppContext';
+
+// Style components import
+import makeStyles from '@material-ui/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Slider from '../components/Slider';
 
-const CustomSlider = withStyles({
-    rail: {
-        height: '1rem',
-        borderRadius: '10px'
-    },
-    track: {
-        height: '1rem',
-        borderRadius: '10px'
-    },
-    thumb: {
-        width: '2rem',
-        height: '2rem',
-        marginTop: '-10px',
-        marginLeft: '-15px',
-        backgroundColor: '#F2C407',
-        color: 'rgba(242, 196, 7, 0.20)',
-        marginRight: '100px',
-        borderLeft: 'solid 10px #F2C407',
-        borderRight: 'solid 10px #F2C407'
-    }
-})(Slider);
+// Constants import
+import { SPEECH } from '../constants/routes';
+
 
 const useStyles = makeStyles(theme => ({
-    title: {
-        color: theme.palette.primary.contrastText
-    },
+    container: {
+		color: theme.palette.secondary.main,
+		height: '82vh'
+	},
     slider: {
         width: '50%',
         height: '1rem',
-        alignSelf: 'center',
         marginTop: '8%',
-        marginBottom: '3%'
+        marginBottom: '4%'
     },
     emojiContainer: {
-        width: '50%',
-        alignSelf: 'center'
+        width: '50%'
     },
     emoji: {
         fontSize: '7rem',
         color: 'white'
     },
+    grow: {
+        flexGrow: 1
+    },
     button: {
-        color: 'white',
-        textTransform: 'None'
-    }
+		color: 'white',
+		textTransform: 'None',
+		display: 'flex',
+		direction: 'row',
+		alignItems: 'center',
+		width: 'fit-content'
+	},
+	buttonIcon: {
+		fontSize: '40px',
+		color: 'white'
+	}
 }));
 
 function Tone() {
     const classes = useStyles();
-    const [value, setValue] = useState(0);
+    const { state, setTone } = useContext(AppContext);
+    const { tone } = state;
     const [redirect, setRedirect] = useState(false);
 
-    const handleChange = (_, newValue) => {
-        setValue(newValue);
-    };
+    const handleChange = (_, newToneVal) => setTone(newToneVal);
 
-    const handleClick = () => {
-        console.log('Send tone value (0 to 10 inclusive): ', value);
-        setRedirect(true);
-    };
+    const handleClick = () => setRedirect(true);
 
     if (redirect)
-        return <Redirect to="/speech" />
+        return <Redirect to={SPEECH} />
 
 	return (
-		<Grid container direction="column" justify="center">
+		<Grid container direction="column" alignItems="center" spacing={2} className={classes.container}>
+            {/* Title */}
             <Grid item>
-                <Typography variant="h2" align="center" className={classes.title}>
+                <Typography variant="h2" align="center" paragraph>
                     <b>Select Your Tone ...</b>
                 </Typography>
             </Grid>
+
+            {/* Silder */}
             <Grid item className={classes.slider}>
-                <CustomSlider
-                    value={value}
+                <Slider
+                    value={tone}
                     onChange={handleChange}
                     color="secondary"
                     getAriaValueText={value => value}
@@ -94,17 +88,27 @@ function Tone() {
                     valueLabelDisplay="on"
                 />
             </Grid>
+
+            {/* Emojis */}
             <Grid container item direction="row" justify="space-between" className={classes.emojiContainer}>
                 <SentimentVeryDissatisfiedIcon className={classes.emoji} />
                 <SentimentDissatisfiedIcon className={classes.emoji} />
                 <SentimentSatisfiedIcon className={classes.emoji} />
                 <SentimentSatisfiedAltIcon className={classes.emoji} />
             </Grid>
-            <Grid container item style={{ marginTop: '3rem', paddingRight: '3rem'}} justify="flex-end">
+            
+            {/* Placeholder: To make sure button are at the same location for each page */}
+            <Grid item className={classes.grow} />
+
+            {/* Next button */}
+            <Grid container item justify="flex-end">
                 <Button onClick={handleClick} className={classes.button}>
-                    <Typography variant="h4" display="inline"><b>Next</b></Typography>&nbsp;&nbsp;
-                    <ArrowForwardIcon style={{fontSize: "40px", marginTop: "-10x", color: "white"}} />
-                </Button>
+					<Typography variant="h4" display="inline">
+						<b>Next</b>
+					</Typography>
+					&nbsp;&nbsp;
+					<ArrowForwardIcon className={classes.buttonIcon} />
+				</Button>
             </Grid>
 		</Grid>
 	);

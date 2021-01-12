@@ -15,7 +15,7 @@ import { TONE } from '../constants/routes';
 const useStyles = makeStyles(theme => ({
 	container: {
 		color: theme.palette.secondary.main,
-		minHeight: '82vh'
+		height: '82vh'
 	},
     button: {
 		color: 'white',
