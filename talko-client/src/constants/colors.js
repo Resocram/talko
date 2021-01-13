@@ -11,7 +11,7 @@ export const SALMON = '#F4A261';
 
 export const DARK_GREEN = '#1B372D';
 export const MAIN_GREEN = '#3C7C64';
-export const LIGHT_GREEN = '#3C7C64';
+export const LIGHT_GREEN = '#52AA8A';
 
 
 // Chart color scheme

@@ -38,7 +38,7 @@ const TAB_INDEX = {
     [ABOUT]: 2
 };
 
-const TAB_TITLE = ['Get Started', 'Dashboard', 'About Us'];
+const TAB_TITLE = ['Get Started', 'How It Works', 'About Us'];
 
 function Navbar() {
     const classes = useStyles();

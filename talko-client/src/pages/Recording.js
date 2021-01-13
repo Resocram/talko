@@ -86,7 +86,7 @@ function Recording() {
             });
     };
 
-    const instruction = record ? 'Recording...' : (!audioBlob ? 'Press on the icon to start recording ...' : 'Done!');
+    const instruction = record ? 'Recording ...' : (!audioBlob ? 'Press on the icon to start recording ...' : 'Done!');
 
     if (error)
         return <Redirect to={ERROR} />

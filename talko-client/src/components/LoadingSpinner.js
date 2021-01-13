@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
     grid: {
         alignItems: 'center',
-        minHeight: '60vh'
+        minHeight: '82vh'
     },
     paper: {
         width: '40%',
