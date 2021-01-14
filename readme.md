@@ -17,7 +17,7 @@
 # Table of Content:
 
 - [Awards Won](#awards-won)
-- [Technology Stack](#techonology-stack)
+- [Technology Stack](#technology-stack)
 - [Key Features](#key-features)
 - [Developers](#developers)
 
