@@ -1,187 +1,205 @@
 import React, { useState } from 'react';
-import { withStyles, makeStyles } from '@material-ui/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import lightbulb from '../assets/lightbulb.svg';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+
+// Style components import
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import { DialogTitle, DialogContent, DialogActions } from '../components/CustomDialog';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
-// import CircularProgress from '../components/CircularProgress';
-import LineChart from '../components/LineChart';
+import Typography from '@material-ui/core/Typography';
+import ConcentricCircle from '../components/ConcentricCircle';
 import BarChart from '../components/BarChart';
+import LineChart from '../components/LineChart';
+import Bulb from '../assets/lightbulb.svg';
+
+// Constants import
+import { MAIN_BLUE, MAIN_YELLOW, DARK_GREEN, MAIN_GREEN, LIGHT_GREEN, ORANGE, RED } from '../constants/colors';
+import { TONE } from '../constants/routes';
 import { goodPerfData, poorPerfData } from '../constants/sampleData';
 
-const useStyles = makeStyles({
+
+const useStyles = makeStyles(theme => ({
+    container: {
+		color: 'white',
+		height: '82vh'
+	},
+    grow: {
+        flexGrow: 1
+    },
+    lineChartCont: {
+        height: '50vh'
+    },
+    lineChartBox: {
+        height: '100%',
+        backgroundColor: '#324F5D',
+        borderRadius: '50px',
+        padding: '1rem'
+    },
     button: {
 		color: 'white',
-        textTransform: 'None',
-        padding: '0.5rem 2rem',
-        border: '3px solid #F2C407',
+		textTransform: 'None',
+		padding: '0.5rem 2rem',
+        border: `3px solid ${theme.palette.secondary.main}`,
         borderRadius: '5rem'
+    },
+    lightbulb: {
+        width: '200px'
     }
-});
-
-const styles = (theme) => ({
-    root: {
-        margin: 0,
-        padding: theme.spacing(2),
-    },
-    closeButton: {
-        position: 'absolute',
-        right: theme.spacing(1),
-        top: theme.spacing(1),
-        color: theme.palette.grey[500],
-    },
-  });
+}));
   
-  const DialogTitle = withStyles(styles)((props) => {
-        const { children, classes, onClose, ...other } = props;
-        return (
-            <MuiDialogTitle disableTypography className={classes.root} {...other}>
-                <Typography variant="h6">{children}</Typography>
-                {onClose ? (
-                <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
-                    <CloseIcon />
-                </IconButton>
-                ) : null}
-            </MuiDialogTitle>
-        );
-  });
-  
-  const DialogContent = withStyles((theme) => ({
-        root: {
-            padding: theme.spacing(2),
-        },
-  }))(MuiDialogContent);
-  
-  const DialogActions = withStyles((theme) => ({
-    root: {
-        margin: 0,
-        padding: theme.spacing(1),
-    },
-  }))(MuiDialogActions);
-
   const datas = [goodPerfData, poorPerfData];
 
 function Dashboard() {
     const perfData = datas[Math.floor(Math.random() * datas.length)];
     const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = perfData;
-    const { articulation_rate, balance, enunciation, number_of_pauses, original_duration, rate_of_speech, speaking_duration, words_per_min} = stats;
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
+    const [transcriptOpen, setTranscriptOpen] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    const handleTranscriptOpen = () => setTranscriptOpen(true);
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const handleTranscriptClose = () => setTranscriptOpen(false);
 
 	return (
-        <div>
-            <Typography variant="h1" paragraph style={{color: "#F2C407", fontFamily: "Righteous", margin: '-1rem 3rem'}}>Dashboard</Typography>
-            <hr style={{backgroundColor: "#F2C407", height: "5px", width: "500px", float: "left", borderColor: "#F2C407", margin: '1rem 3rem'}} />
-            <Grid container spacing={1} style={{ height: '100%' }}>
-				<Grid item xs={3} style={{marginLeft:"50px", marginTop: "60px"}}>
-                    <Box style={{height: "370px", width: "370px", borderRadius: "50%", backgroundColor: "#1B372D", marginTop:"-25px"}}/>
-                    <Box style={{height: "285px", width: "285px", borderRadius: "50%", backgroundColor: "#3C7C64", marginTop: "-326px", marginLeft: "44px"}}/>
-                    <Box style={{height: "230px", width: "230px", borderRadius: "50%", backgroundColor: "#52AA8A", marginTop: "-259px", marginLeft:"71px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "70px", fontFamily: "Montserrat", marginTop: "-160px", marginLeft: "118px"}}><strong>{accuracy}%</strong></Typography>
-				</Grid>
-                <Grid item xs={3}>
-                    <Typography varaint="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "140px", marginLeft: "57px"}}>
-                        Excellent speaking! From our analysis, the tone of your speech was {accuracy}% {tone}, which matches your initial selection.
-                    </Typography>
-				</Grid>
-                <Grid item xs={2}>
-                    <Box style={{border: "9px solid #F4A261", height: "145px", width: "145px", borderRadius: "50%", marginTop: "120px", marginLeft: "5px"}}/>
-                    <Typography variant="h6" style={{color: "white", marginTop: "10px", marginLeft: "36px"}}><strong>Words per Minute</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", marginTop: "-182px", marginLeft: "48px"}}><strong>{words_per_min}</strong></Typography>
-				</Grid>
-                <Grid item xs={2}>
-                    <CircularProgress variant="determinate" value={79} style={{height: "175px", width: "175px", color: "#F2C407", marginTop:"-10px", marginLeft:"-10px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-112px", marginLeft: "33px"}}><strong>79%</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginLeft: "19px", marginTop: "70px"}}><strong>Enunciation</strong></Typography>
-				</Grid>
-                <Grid item xs={1}>
-                    <Box style={{border: "9px solid #E76F51", height: "145px", width: "145px", borderRadius: "50%", marginTop:"120px", marginLeft: "-25px"}}/>
-                    <Typography variant="h3" style={{color: "white", fontSize: "20px", fontFamily: "Montserrat", marginTop: "12px", marginLeft: "24px"}}><strong>Pauses</strong></Typography>
-                    <Typography variant="h3" style={{color: "white", fontSize: "45px", fontFamily: "Montserrat", marginTop: "-137px", marginLeft: "36px"}}><strong>{number_of_pauses}</strong></Typography>
-				</Grid>
-			</Grid>
-
-            {/* Energy over Time Line Chart */}
-            <div style={{backgroundColor: "#324F5D", marginLeft: "8%", marginRight: "8%", height: "300px", marginTop: "140px", borderRadius: "25px", padding: '2rem'}}>
-                <LineChart values={audioValues} />
-            </div> 
-
-
-            {/* Bar Graph & Tips and Tricks Section */}
-            <Grid container spacing={1} style={{ marginLeft: '5rem'}}>
-                <Grid item xs={5}>
-                    <BarChart values={errorsInterval} />
-                </Grid>
-                <Grid item container xs={7} direction="column">
-                    <Grid item container direction="row" alignItems="center">
-                        <img src={lightbulb} alt="lightbulb" style={{ width: "300px", height: "300px"}}/>
-                        <Typography variant="h3" style={{color: "white", fontSize: "30px", fontFamily: "Montserrat", marginLeft: "-180px", marginTop: "-80px"}}>
-                            <strong>Tips and Tricks</strong>
+        <Grid container alignItems="center" spacing={2} className={classes.container}>
+            {/* Overall Scores */}
+            <Grid item xs={12} container direction="row" justify="space-between">
+                <Grid item xs={6} spacing={2} container="row">
+                    <Grid item xs={6}>
+                        <ConcentricCircle
+                            size={300}
+                            fontType="h2"
+                            label={`${accuracy}%`}
+                            outerColor={DARK_GREEN}
+                            middleColor={MAIN_GREEN}
+                            innerColor={LIGHT_GREEN}
+                        />
+                    </Grid>
+                    <Grid item container xs={6} alignItems="center">
+                        <Typography variant="h6" paragraph>
+                            <b>
+                                Excellent speaking! From our analysis, the tone of your 
+                                speech was {accuracy}% {tone}, which matches your initial 
+                                selection.
+                            </b>
                         </Typography>
                     </Grid>
-                    <Grid item container direction="column" style={{ width: '70%', marginLeft: "3rem", marginTop: "-60px"}}>
-                        {
-                            suggestions.map((item, i) => <Typography key={i} variant="body1" style={{ color: 'white' }} paragraph>{item}</Typography>)
-                        }
+                </Grid>
+
+                <Grid item xs={6} spacing={2} container="row" justify="space-evenly">
+                    {/* Enunciation */}
+                    <Grid item>
+                        <ConcentricCircle
+                            title="Enunciation"
+                            size={200}
+                            fontType="h3"
+                            label={`${stats.enunciation}%`}
+                            outerColor={MAIN_BLUE}
+                            middleColor={MAIN_YELLOW}
+                            innerColor={MAIN_BLUE}
+                        />
+                    </Grid>
+
+                    {/* WPM */}
+                    <Grid item>
+                        <ConcentricCircle
+                            title="Words per Minute"
+                            size={200}
+                            fontType="h3"
+                            label={stats.words_per_min}
+                            outerColor={MAIN_BLUE}
+                            middleColor={ORANGE}
+                            innerColor={MAIN_BLUE}
+                        />
+                    </Grid>
+
+                    {/* No of Pauses */}
+                    <Grid item>
+                        <ConcentricCircle
+                            title="No of Pauses"
+                            size={200}
+                            fontType="h3"
+                            label={stats.number_of_pauses}
+                            outerColor={MAIN_BLUE}
+                            middleColor={RED}
+                            innerColor={MAIN_BLUE}
+                        />
                     </Grid>
                 </Grid>
             </Grid>
 
-            <br /><br /><br />
+            <Grid item className={classes.grow} />
+
+            {/* Energy over Time Line Chart */}
+            <Grid item xs={12} className={classes.lineChartCont}>
+                <Box m={2} className={classes.lineChartBox}>
+                    <LineChart values={audioValues} />
+                </Box>
+            </Grid>
+
+            <Grid item className={classes.grow} />
+
+            {/* Bar Graph & Tips and Tricks Section */}
+            <Grid item xs={12} style={{ padding: '3rem'}}>
+                <Grid item container spacing={4} direction="row" justify="center">
+                    {/* Bar Graph */}
+                    <Grid item xs={6}>
+                        <BarChart values={errorsInterval} />
+                    </Grid>
+
+                    {/* Tips and Tricks */}
+                    <Grid item container xs={6} direction="column">
+                        <Grid item container direction="row" alignItems="center">
+                            <img src={Bulb} alt="lightbulb" className={classes.lightbulb} />
+                            <Typography variant="h3">
+                                <strong>Tips and Tricks</strong>
+                            </Typography>
+                        </Grid>
+                        <Grid item container direction="column">
+                            {
+                                suggestions.map((item, i) => 
+                                    <Typography key={i} variant="h6" paragraph>{item}</Typography>
+                                )
+                            }
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid item className={classes.grow} />
 
             {/* Button Group */}
-            <Grid container spacing={6} direction="row" justify="space-evenly">
+            <Grid item container spacing={6} direction="row" justify="space-evenly">
                 <Grid item>
-                    <Button onClick={handleClickOpen} className={classes.button}>
+                    <Button onClick={handleTranscriptOpen} className={classes.button}>
 						<Typography variant="h5"><b>Transcript</b></Typography>
 					</Button>
                 </Grid>
                 <Grid item>
-                    <Button href="/tone" className={classes.button}>
+                    <Button href={TONE} className={classes.button}>
 						<Typography variant="h5"><b>One More Time!</b></Typography>
 					</Button>
                 </Grid>
             </Grid>
 
-            <br /><br /><br />
-
             {/* Transcript Popup */}
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            <Dialog onClose={handleTranscriptClose} aria-labelledby="customized-dialog-title" open={transcriptOpen}>
+                <DialogTitle id="customized-dialog-title" onClose={handleTranscriptClose}>
                     Transcript
                 </DialogTitle>
                 <DialogContent dividers>
-                    <Typography gutterBottom>
+                    <Typography variant="body1" gutterBottom>
                         {transcription}
                     </Typography>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
+                    <Button autoFocus onClick={handleTranscriptClose}>
                         Close
                     </Button>
                 </DialogActions>
             </Dialog>
-
-        </div>
+		</Grid>
 	);
 }
-
-
 
 export default Dashboard;

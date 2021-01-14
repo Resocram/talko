@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import { DARK_BLUE } from '../constants/colors';
 
 function LineChart({ values }) {
     const state = {
@@ -15,8 +16,7 @@ function LineChart({ values }) {
                 pointRadius: 0.1,
                 data: values
             }
-        ],
-        height: '200px'
+        ]
     };
 
     return (
@@ -38,11 +38,11 @@ function LineChart({ values }) {
                             labelString: 'Energy',
                             fontSize: 18,
                             fontStyle: 'bold',
-                            fontColor: '#FFFFFF',
+                            fontColor: 'white',
                         },
                         ticks: {
                             display: true,
-                            fontColor: '#324F5D'
+                            fontColor: DARK_BLUE
                         },
                         gridLines: {
                             display: false,
@@ -55,11 +55,11 @@ function LineChart({ values }) {
                             labelString: 'Time',
                             fontSize: 18,
                             fontStyle: 'bold',
-                            fontColor: '#FFFFFF'
+                            fontColor: 'white'
                         },
                         ticks: {
                             display: true,
-                            fontColor: '#324F5D'
+                            fontColor: DARK_BLUE
                         },
                         gridLines: {
                             display: true,
@@ -68,8 +68,8 @@ function LineChart({ values }) {
                     }]
                 }
             }}
-            width={1250}
-            height={1150}
+            width="70%"
+            height="70%"
         /> 
     );
 }

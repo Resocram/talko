@@ -16,3 +16,5 @@ export const LIGHT_GREEN = '#52AA8A';
 
 // Chart color scheme
 export const DARK_BLUE = '#324F5D';
+export const ORANGE = '#F4A261';
+export const RED = '#E76F51';
