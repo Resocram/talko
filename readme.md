@@ -3,7 +3,9 @@
 
 <div align="center">Public speaking fears got you down? Introducing Talko. Your virtual public speaking coach.</div>
 
-<div align="center"><img src ="https://raw.githubusercontent.com/Resocram/talko/119af34334bee18c9471fd75edc8dc320658aeb4/talko-client/src/assets/talko-logo.svg" style="vertical-align:middle"></div>
+<br/>
+
+<div align="center"><img src ="https://github.com/Resocram/talko/blob/main/talko-client/public/logo192.png?raw=true" style="vertical-align:middle"></div>
 
 <div align="center">
 <h4>Talko is a web solution that provides instant feedback on your public speaking skills and habits. Just head to our website at talko.tech, input your speech transcript, and start talking! Talko will analyze your energy levels, enunciation, pace, pause frequency, and more to provide you with detailed and constructive feedback.</h4>
