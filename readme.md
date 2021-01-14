@@ -26,7 +26,7 @@
 
 ## <div align="center" style="font-size: 30px">🏆Honorable Mention and Popular Vote Winner at nwHacks 2021🏆</div>
 ### <div align="center" style="font-size: 15px">Western Canada's Largest Hackathon with ~ 800 participants </div>
-<div align="center"><img src ="" style="vertical-align:middle"></div>
+<div align="center"><img src ="https://github.com/Resocram/talko/blob/main/assets/awards.png?raw=true" style="vertical-align:middle"></div>
 <div align="center">https://devpost.com/software/talko-ep67vu</div>
 
 
