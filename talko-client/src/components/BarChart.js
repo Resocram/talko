@@ -1,5 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { DARK_BLUE } from '../constants/colors';
+
 
 function BarChart({ values }) {
     const state = {
@@ -7,8 +9,6 @@ function BarChart({ values }) {
         datasets: [
           {
             backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 2,
             data: values
           }
         ]
@@ -33,11 +33,11 @@ function BarChart({ values }) {
                             labelString: 'Errors',
                             fontSize: 18,
                             fontStyle: 'bold',
-                            fontColor: '#FFFFFF',
+                            fontColor: 'white',
                         },
                         ticks: {
                             display: false,
-                            fontColor: '#324F5D'
+                            fontColor: DARK_BLUE
                         },
                         gridLines: {
                             display: false,
@@ -50,11 +50,11 @@ function BarChart({ values }) {
                             labelString: 'Interval',
                             fontSize: 18,
                             fontStyle: 'bold',
-                            fontColor: '#FFFFFF'
+                            fontColor: 'white'
                         },
                         ticks: {
                             display: false,
-                            fontColor: '#324F5D'
+                            fontColor: DARK_BLUE
                         },
                         gridLines: {
                             display: true,
@@ -63,8 +63,8 @@ function BarChart({ values }) {
                     }]
                 }
             }}
-            width={750}
-            height={475}
+            width="100%"
+            height="100%"
         /> 
     );
 }
