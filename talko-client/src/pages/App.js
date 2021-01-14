@@ -63,6 +63,11 @@ function App() {
             />
             <Route
               exact
+              path={ROUTES.DEMO}
+              render={() => <Dashboard />}
+            />
+            <Route
+              exact
               path={ROUTES.DASHBOARD}
               render={() => <Dashboard />}
             />

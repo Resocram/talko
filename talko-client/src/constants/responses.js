@@ -1,4 +1,4 @@
-export const goodPerfData = {
+const good = {
     "accuracy": 92,
     "audioValues": [
         0.15804717705851132,
@@ -135,7 +135,7 @@ export const goodPerfData = {
 };
 
 
-export const poorPerfData = {
+const bad = {
     "accuracy": 71,
     "audioValues": [
         0.21982398580230345,
@@ -260,3 +260,7 @@ export const poorPerfData = {
         'Increasing energy levels throughout your speech would help match the neutral tone you selected'
     ]
 };
+
+const responses = [good, bad];
+
+export default responses;

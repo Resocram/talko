@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
 
 function Recording() {
     const classes = useStyles();
-    const { state, setAudioBlob } = useContext(AppContext);
+    const { state, setAudioBlob, setSpeechStats } = useContext(AppContext);
     const { audioBlob } = state;
     const [record, setRecord] = useState(false);
     const [redirect, setRedirect] = useState(false);
@@ -78,6 +78,7 @@ function Recording() {
         analyzeAudio(audioBlob)
             .then(data => {
                 console.log('Analyzed result: ', data);
+                setSpeechStats(data);
                 setRedirect(true);
             })
             .catch(err => {

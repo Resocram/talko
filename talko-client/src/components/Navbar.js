@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import LogoButton from './LogoButton';
 
 // Constants import
-import { LANDING, DASHBOARD, ABOUT } from '../constants/routes';
+import { LANDING, DEMO, ABOUT } from '../constants/routes';
 
 
 const useStyles = makeStyles({
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 const TAB_INDEX = {
     [LANDING]: 0,
-    [DASHBOARD]: 1,
+    [DEMO]: 1,
     [ABOUT]: 2
 };
 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Redirect, useLocation } from 'react-router-dom';
+import AppContext from '../contexts/AppContext';
 
 // Style components import
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -15,8 +17,8 @@ import Bulb from '../assets/lightbulb.svg';
 
 // Constants import
 import { MAIN_BLUE, MAIN_YELLOW, DARK_GREEN, MAIN_GREEN, LIGHT_GREEN, ORANGE, RED } from '../constants/colors';
-import { TONE } from '../constants/routes';
-import { goodPerfData, poorPerfData } from '../constants/sampleData';
+import { DEMO, DASHBOARD, ERROR, TONE } from '../constants/routes';
+import data from '../constants/responses';
 
 
 const useStyles = makeStyles(theme => ({
@@ -47,14 +49,31 @@ const useStyles = makeStyles(theme => ({
         width: '200px'
     }
 }));
-  
-  const datas = [goodPerfData, poorPerfData];
 
 function Dashboard() {
-    const perfData = datas[Math.floor(Math.random() * datas.length)];
-    const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = perfData;
+    const location = useLocation();
+    const { state } = useContext(AppContext);
     const classes = useStyles();
     const [transcriptOpen, setTranscriptOpen] = useState(false);
+
+    let parsedData = {};
+
+    if (location.pathname === DEMO) {
+        parsedData = data[Math.floor(Math.random() * data.length)];
+    }
+
+    if (location.pathname === DASHBOARD) {
+        const { speechStats } = state;
+        if (Object.keys(speechStats).length < 1)
+            return <Redirect to={ERROR} />
+        else
+            parsedData = speechStats;
+    }
+
+    if (Object.keys(parsedData).length < 1)
+        return <Redirect to={ERROR} />
+
+    const { accuracy, audioValues, stats, transcription, tone, errorsInterval, suggestions } = parsedData;
 
     const handleTranscriptOpen = () => setTranscriptOpen(true);
 
@@ -64,7 +83,7 @@ function Dashboard() {
         <Grid container alignItems="center" spacing={2} className={classes.container}>
             {/* Overall Scores */}
             <Grid item xs={12} container direction="row" justify="space-between">
-                <Grid item xs={6} spacing={2} container="row">
+                <Grid item xs={6} spacing={2} container direction="row">
                     <Grid item xs={6}>
                         <ConcentricCircle
                             size={300}
@@ -86,7 +105,7 @@ function Dashboard() {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={6} spacing={2} container="row" justify="space-evenly">
+                <Grid item xs={6} spacing={2} container direction="row" justify="space-evenly">
                     {/* Enunciation */}
                     <Grid item>
                         <ConcentricCircle

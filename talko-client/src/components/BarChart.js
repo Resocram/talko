@@ -63,8 +63,6 @@ function BarChart({ values }) {
                     }]
                 }
             }}
-            width="100%"
-            height="100%"
         /> 
     );
 }
