@@ -8,7 +8,7 @@
 <div align="center"><img src="https://github.com/Resocram/talko/blob/main/talko-client/public/logo192.png?raw=true" width="100" height="80" style="vertical-align:middle"></div>
 
 <div align="center">
-<h4>Talko is a web solution that provides instant feedback on your public speaking skills and habits. Just head to our website at talko.tech, input your speech transcript, and start talking! Talko will analyze your energy levels, enunciation, pace, pause frequency, and more to provide you with detailed and constructive feedback.</h4>
+<h4>Talko is a web solution that provides instant feedback on your public speaking skills and habits. All you have to do is input your speech transcript and start talking! Talko will analyze your energy levels, enunciation, pace, pause frequency, and more to provide you with detailed and constructive feedback.</h4>
 </div>
 
 
