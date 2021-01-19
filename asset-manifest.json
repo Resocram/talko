@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/talko/static/css/main.9c163154.chunk.css",
+    "main.js": "/talko/static/js/main.08ee7f28.chunk.js",
+    "main.js.map": "/talko/static/js/main.08ee7f28.chunk.js.map",
+    "runtime-main.js": "/talko/static/js/runtime-main.fd53ab18.js",
+    "runtime-main.js.map": "/talko/static/js/runtime-main.fd53ab18.js.map",
+    "static/js/2.08215e68.chunk.js": "/talko/static/js/2.08215e68.chunk.js",
+    "static/js/2.08215e68.chunk.js.map": "/talko/static/js/2.08215e68.chunk.js.map",
+    "static/js/3.fd06844d.chunk.js": "/talko/static/js/3.fd06844d.chunk.js",
+    "static/js/3.fd06844d.chunk.js.map": "/talko/static/js/3.fd06844d.chunk.js.map",
+    "index.html": "/talko/index.html",
+    "static/css/main.9c163154.chunk.css.map": "/talko/static/css/main.9c163154.chunk.css.map",
+    "static/js/2.08215e68.chunk.js.LICENSE.txt": "/talko/static/js/2.08215e68.chunk.js.LICENSE.txt",
+    "static/media/claire-photo.a71109ef.jpg": "/talko/static/media/claire-photo.a71109ef.jpg",
+    "static/media/josh-photo.4588c1c6.jpg": "/talko/static/media/josh-photo.4588c1c6.jpg",
+    "static/media/lightbulb.09ece310.svg": "/talko/static/media/lightbulb.09ece310.svg",
+    "static/media/marco-photo.8fe27c56.png": "/talko/static/media/marco-photo.8fe27c56.png",
+    "static/media/monitor-dash.006de46c.svg": "/talko/static/media/monitor-dash.006de46c.svg",
+    "static/media/shade-photo.ca79733f.png": "/talko/static/media/shade-photo.ca79733f.png",
+    "static/media/talko-logo.c5011490.svg": "/talko/static/media/talko-logo.c5011490.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd53ab18.js",
+    "static/js/2.08215e68.chunk.js",
+    "static/css/main.9c163154.chunk.css",
+    "static/js/main.08ee7f28.chunk.js"
+  ]
+}
